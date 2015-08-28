@@ -1,5 +1,3 @@
-module Formula
-  module Fields
-    VERSION = "0.1.0"
-  end
+module FormulaFields
+  VERSION = "0.1.0"
 end

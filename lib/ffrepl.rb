@@ -1,4 +1,4 @@
-require './formula_fields.rb'
+require 'formula_fields'
 
 include FormulaFields
 

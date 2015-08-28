@@ -5,7 +5,7 @@ require 'formula_fields/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "formula_fields"
-  spec.version       = Formula::Fields::VERSION
+  spec.version       = FormulaFields::VERSION
   spec.authors       = ["Anthony Salani"]
   spec.email         = ["asalani93@gmail.com"]
 
