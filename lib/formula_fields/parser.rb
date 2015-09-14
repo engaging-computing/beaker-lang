@@ -59,8 +59,13 @@ module FormulaFields
     end
 
     production(:notexpr) do
-      clause('callexpr') { |x| x }
+      clause('signexpr') { |x| x }
       clause('NOT NEWLINE* .notexpr') { |x| Not.new(x) }
+    end
+
+    production(:signexpr) do
+      clause('callexpr') { |x| x }
+      clause('.ADDOP NEWLINE* .signexpr') { |op, x| op == '+' ? x : Mul.new(NumberLiteral.new(Float(-1)), x) }
     end
 
     production(:callexpr) do
@@ -75,8 +80,7 @@ module FormulaFields
 
     production(:identexpr) do
       clause('IDENTIFIER') { |x| Name.new(x) }
-      clause('OPENP NEWLINE* .andexpr NEWLINE* CLOSEP') { |x| x }
-      clause('.ADDOP NEWLINE* .andexpr') { |op, x| op == '+' ? x : Mul.new(NumberLiteral.new(Float(-1)), x) }
+      clause('OPENP NEWLINE* .assexpr NEWLINE* CLOSEP') { |x| x }
       clause('LITERAL') { |x| x.is_a?(Numeric) ? NumberLiteral.new(Float(x)) : StringLiteral.new(String(x)) }
     end
 
