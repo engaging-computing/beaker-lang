@@ -131,6 +131,10 @@ module FormulaFields
       end
     end
 
+    def to_s
+      "\"#{@value}\""
+    end
+
     def self.concatenate(l, r)
       temp_l = l.get.to_s
       temp_r = r.get.to_s

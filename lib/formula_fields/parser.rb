@@ -55,7 +55,7 @@ module FormulaFields
 
     production(:powexpr) do
       clause('notexpr') { |x| x }
-      clause('.powexpr NEWLINE* POWOP NEWLINE* .notexpr') { |x, y| Pow.new(x, y) }
+      clause('.notexpr NEWLINE* POWOP NEWLINE* .powexpr') { |x, y| Pow.new(x, y) }
     end
 
     production(:notexpr) do

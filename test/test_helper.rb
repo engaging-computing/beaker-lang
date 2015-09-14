@@ -65,14 +65,22 @@ end
 
 def load_parse_multiline(file)
   exprs = []
-  lines = []
+  start_expr = []
+  parse_tree = []
+  finished_tree = false
   File.open(file, 'r') do |f|
     f.each_line do |line|
       if line.strip == '::'
-        exprs << [lines[0..-2].join.strip, lines[-1].strip]
-        lines = []
+        exprs << [start_expr.join.strip, parse_tree.join.strip]
+        start_expr = []
+        parse_tree = []
+        finished_tree = false
+      elsif line.strip == '>>'
+        finished_tree = true
+      elsif finished_tree
+        parse_tree << line
       else
-        lines << line
+        start_expr << line
       end
     end
   end

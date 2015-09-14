@@ -1,5 +1,5 @@
 module FormulaFields
-  def build_type_label(object)
+  def self.build_type_label(object)
     object.type == :array ? [object.contains] : object.type
   end
 
@@ -15,7 +15,7 @@ module FormulaFields
       if object.nil?
         @optional
       else
-        @type == build_type_label(object)
+        FormulaFields::build_type_label(object) == @type
       end
     end
 
@@ -48,7 +48,7 @@ module FormulaFields
       elsif @inner and this.type == :array
         this.contains == build_type_label(object)
       else
-        build_type_label(this) == build_type_label(object)
+        FormulaFields::build_type_label(this) == FormulaFields::build_type_label(object)
       end
     end
 
