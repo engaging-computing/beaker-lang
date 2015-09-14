@@ -1,10 +1,8 @@
 require 'test_helper'
 
 class ParserTest < Minitest::Test
-  def test_valid_source_simple
-    lines = load_parse_test('./test/files/parser_simple.txt')
-
-    lines.each do |x|
+  load_parse_test('./test/files/parser_simple.txt').each.with_index do |x, i|
+    define_method("test_parser_simple_#{i}") do
       src, res = x
       lex = FormulaFields::Lexer.lex(src)
       parse = FormulaFields::Parser.parse(lex)[0].to_s
@@ -12,10 +10,8 @@ class ParserTest < Minitest::Test
     end
   end
 
-  def test_valid_source_multiline
-    exprs = load_parse_multiline('./test/files/parser_multiline.txt')
-
-    exprs.each do |x|
+  load_parse_multiline('./test/files/parser_multiline.txt').each.with_index do |x, i|
+    define_method("test_parser_multiline_#{i}") do
       src, res = x
       lex = FormulaFields::Lexer.lex(src)
       parse = FormulaFields::Parser.parse(lex).join(';')

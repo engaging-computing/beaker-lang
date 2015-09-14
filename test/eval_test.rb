@@ -1,11 +1,9 @@
 require 'test_helper'
 
 class EvalTest < Minitest::Test
-  def test_valid_source_simple
-    lines = load_parse_test('./test/files/eval_simple.txt')
-    curr_env = FormulaFields::Environment.new(false, FormulaFields.stdlib)
-
-    lines.each do |x|
+  load_parse_test('./test/files/eval_simple.txt').each.with_index do |x, i|
+    define_method("test_parse_simple_#{i}") do
+      curr_env = FormulaFields::Environment.new(false, FormulaFields.stdlib)
       src, res = x
       lex = FormulaFields::Lexer.lex(src)
       parse = FormulaFields::Parser.parse(lex)
