@@ -58,7 +58,7 @@ module FormulaFields
     func = lambda do |_, x|
       begin
         NumberType.new((x.get).send(func_name))
-      rescue => e
+      rescue
         NumberType.new(nil)
       end
     end

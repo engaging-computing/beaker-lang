@@ -12,10 +12,7 @@ module FormulaFields
     end
 
     def add_class(name, hash)
-      #puts @class
       @class[name] = hash
-      #puts @class
-      #@class
     end
 
     def lookup(name, scope = nil)

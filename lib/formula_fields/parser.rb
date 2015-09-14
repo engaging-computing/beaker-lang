@@ -5,7 +5,7 @@ module FormulaFields
     production(:expr) do
       clause('assexpr') { |x| [x] }
       clause('NEWLINE+') { |_| [] }
-      clause('.assexpr NEWLINE+ .expr') { |x, y| x + [y] }
+      clause('.assexpr NEWLINE+ .expr') { |x, y| [x] + y }
     end
 
     production(:assexpr) do

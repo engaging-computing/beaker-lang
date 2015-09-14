@@ -23,10 +23,10 @@ class LexerTest < Minitest::Test
 
   def test_invalid_source
     failed = false
-    snips = ['`', '~', '@', '#', '$', '|', '&', ';', ':', '{', '}', '\\', '?', '"\"', "'\\'"]
-    snips.each do |x|
+    lines = load_lex_test('./test/files/lexer_incorrect.txt', false)
+    lines.each do |x|
       begin
-        lex = FormulaFields::Lexer.lex(x)
+        FormulaFields::Lexer.lex(x)
         assert false, "Should not have been able to lex '#{x}'"
       rescue RLTK::LexingError
         failed = true

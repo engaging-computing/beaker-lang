@@ -31,18 +31,22 @@ def err_token_misimatch(is, should, src, lex, res)
 end
 
 def err_parse_mismatch(is, should, src)
-  "Parse mismatch:" \
+  'Parse mismatch:' \
   "\n  String: #{src}" \
   "\n  Parsed: #{is}" \
-  "\n  Shoudl be: #{should}"
+  "\n  Should be: #{should}"
 end
 
-def load_lex_test(file)
+def load_lex_test(file, is_valid = true)
   lines = []
   File.open(file, 'r') do |f|
     f.each_line do |line|
-      l, r = line.split('::')
-      lines << [unescape(l.strip), r.strip.split(' ').map(&:to_sym)]
+      if is_valid
+        l, r = line.split('::')
+        lines << [unescape(l.strip), r.strip.split(' ').map(&:to_sym)]
+      else
+        lines << line.strip
+      end
     end
   end
   lines
@@ -57,6 +61,22 @@ def load_parse_test(file)
     end
   end
   lines
+end
+
+def load_parse_multiline(file)
+  exprs = []
+  lines = []
+  File.open(file, 'r') do |f|
+    f.each_line do |line|
+      if line.strip == '::'
+        exprs << [lines[0..-2].join.strip, lines[-1].strip]
+        lines = []
+      else
+        lines << line
+      end
+    end
+  end
+  exprs
 end
 
 def unescape(s)

@@ -1,4 +1,3 @@
-#require './formula_fields.rb'
 include FormulaFields
 
 module TestCode
