@@ -83,7 +83,7 @@ module FormulaFields
     end
 
     def to_s
-      contract_str = @contracts.map { |x| x.to_s }
+      contract_str = @contracts.map(&:to_s)
       "{#{contract_str.join '|'}}"
     end
   end

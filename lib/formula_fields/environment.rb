@@ -12,7 +12,10 @@ module FormulaFields
     end
 
     def add_class(name, hash)
+      #puts @class
       @class[name] = hash
+      #puts @class
+      #@class
     end
 
     def lookup(name, scope = nil)
@@ -21,6 +24,8 @@ module FormulaFields
                       nil
                     elsif table.type == :namespace
                       table.get[name]
+                    elsif !@parent.nil?
+                      @parent.lookup(name, table)
                     else
                       class_lookup = @class[table.type]
                       class_lookup.nil? ? nil : class_lookup[name]
@@ -28,8 +33,6 @@ module FormulaFields
       if look_result.nil?
         if !@parent.nil? and @scope.nil?
           @parent.lookup(name)
-        else
-          nil
         end
       elsif look_result.is_a? Hash
         NamespaceType.new(look_result)

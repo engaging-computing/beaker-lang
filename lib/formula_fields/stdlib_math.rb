@@ -57,8 +57,8 @@ module FormulaFields
   def self.numeric_unary(func_name)
     func = lambda do |_, x|
       begin
-        NumberType.new(Numeric.send(func_name, x.get))
-      rescue
+        NumberType.new((x.get).send(func_name))
+      rescue => e
         NumberType.new(nil)
       end
     end

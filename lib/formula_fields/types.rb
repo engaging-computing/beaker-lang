@@ -145,7 +145,7 @@ module FormulaFields
         base = r.get.abs.floor
         part = r.get.abs - base
 
-        newstr = l.get * base  + l.get[0, (l.get.length * part).round]
+        newstr = l.get * base + l.get[0, (l.get.length * part).round]
         if sign == 1
           TextType.new(newstr)
         else
@@ -364,7 +364,7 @@ module FormulaFields
           fail ArgumentCountError.new(@name, @contract.length, args.length)
         end
       elsif !follows_contract?(args)
-        contract_types = @contract.map { |x| x.to_s }
+        contract_types = @contract.map(&:to_s)
         arg_types = args.map { |x| x.type.to_s }
         fail ArgumentTypeError.new(@name, contract_types, arg_types)
       else
@@ -481,7 +481,6 @@ module FormulaFields
     when :latitude then LatitudeType.new(nil)
     when :longitude then LongitudeType.new(nil)
     when :timestamp then TimestampType.new(nil)
-    else nil
     end
   end
 
@@ -492,7 +491,6 @@ module FormulaFields
     when :latitude then LatitudeType.new(value)
     when :longitude then LongitudeType.new(value)
     when :timestamp then TimestampType.new(value)
-    else nil
     end
   end
 end

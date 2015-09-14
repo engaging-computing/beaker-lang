@@ -1,4 +1,19 @@
-require './formula_fields.rb'
+require './formula_fields/types'
+require './formula_fields/contract'
+require './formula_fields/lexer'
+require './formula_fields/ast'
+require './formula_fields/parser'
+require './formula_fields/environment'
+require './formula_fields/errors'
+require './formula_fields/stdlib'
+require './formula_fields/stdlib_array'
+require './formula_fields/stdlib_bool'
+require './formula_fields/stdlib_location'
+require './formula_fields/stdlib_math'
+require './formula_fields/stdlib_number'
+require './formula_fields/stdlib_text'
+require './formula_fields/stdlib_timestamp'
+
 require './ffcode.rb'
 
 include FormulaFields

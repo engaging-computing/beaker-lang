@@ -1,0 +1,38 @@
+1 :: 1.0
+-1 :: (* -1.0 1.0)
+1 + 2 :: (+ 1.0 2.0)
+1 - 2 :: (- 1.0 2.0)
+1 * 2 :: (* 1.0 2.0)
+1 / 2 :: (/ 1.0 2.0)
+1 % 2 :: (% 1.0 2.0)
+1 ^ 2 :: (^ 1.0 2.0)
+"a" :: "a"
+'a' :: "a"
+"a" + "b" :: (+ "a" "b")
+"a" * 300 :: (* "a" 300.0)
+(1 + 2) :: (+ 1.0 2.0)
+True :: True
+False :: False
+!a :: (not a)
+!!a :: (not (not a))
+a && b :: (and a b)
+a || b :: (or a b)
+a == b :: (eq? a b)
+a != b :: (ne? a b)
+a > b :: (> a b)
+a < b :: (< a b)
+a >= b :: (>= a b)
+a <= b :: (<= a b)
+name :: name
+1 + name :: (+ 1.0 name)
+name + 1 :: (+ name 1.0)
+name() :: (name)
+name.func() :: (name:func)
+name(arg1, arg2) :: (name arg1 arg2)
+name.func(arg1, arg2) :: (name:func arg1 arg2)
+func(1) :: (func 1.0)
+func(1, 'a') :: (func 1.0 "a")
+"func(1, 1)" :: "func(1, 1)"
+a.b.c(d.e().f.g)() :: ((a:b:c (d:e):f:g))
+a = b = c = d() :: (let a (let b (let c (d))))
+a * b + c * d :: (+ (* a b) (* c d))
