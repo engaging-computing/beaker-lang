@@ -127,7 +127,7 @@ module FormulaFields
         NumberType.new(nil)
       else
         mean = x.get.reduce { |a, e| a + e.to_f } / x.get.length
-        variance = x.get.reduce { |a, e| a + (e.to_f + mean)**2 } / x.get.length
+        variance = x.get.reduce(0) { |a, e| a + (e.to_f - mean)**2 } / x.get.length
         NumberType.new(variance)
       end
     end
@@ -141,7 +141,7 @@ module FormulaFields
         NumberType.new(nil)
       else
         mean = x.get.reduce { |a, e| a + e.to_f } / x.get.length
-        variance = x.get.reduce { |a, e| a + (e.to_f + mean)**2 } / x.get.length
+        variance = x.get.reduce(0) { |a, e| a + (e.to_f - mean)**2 } / x.get.length
         NumberType.new(Math.sqrt(variance))
       end
     end
