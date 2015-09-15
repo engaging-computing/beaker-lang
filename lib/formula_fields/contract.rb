@@ -46,7 +46,7 @@ module FormulaFields
       elsif @inner and this.type != :array
         false
       elsif @inner and this.type == :array
-        this.contains == build_type_label(object)
+        this.contains == FormulaFields::build_type_label(object)
       else
         FormulaFields::build_type_label(this) == FormulaFields::build_type_label(object)
       end
