@@ -1,0 +1,51 @@
+"dogs".length() :: 4.0
+"dogs".capitalize() :: "Dogs"
+"dogs".uppercase() :: "DOGS"
+"DOGS".lowercase() :: "dogs"
+"dOGs".swapcase() :: "DogS"
+"dogs".reverse() :: "sgod"
+"   dogs  ".trim() :: "dogs"
+"dogs".substring(1,3) :: "og"
+"dogs".substring(-1, 20) :: "dogs"
+"dogs".substring(0,4).uppercase() :: "DOGS"
+"1".to_number() :: 1.0
+"1".to_number(2) :: 1.0
+"a".to_number() ::
+"a".to_number(2) :: 2.0
+"2001-1-1 01:01:01".to_timestamp() :: 2001/01/01 01:01:01
+"2001-1-1 1:01".to_timestamp() :: 2001/01/01 01:01:00
+"2001-1-1 1".to_timestamp() :: 2001/01/01 01:00:00
+"2001-1-1".to_timestamp() :: 2001/01/01 00:00:00
+"2001-1".to_timestamp() ::
+"2001".to_timestamp() ::
+"mudwolf".to_timestamp() ::
+"2001-1-1 01:01:01".to_timestamp(Test.t4) :: 2001/01/01 01:01:01
+"2001-1-1 1:01".to_timestamp(Test.t4) :: 2001/01/01 01:01:00
+"2001-1-1 1".to_timestamp(Test.t4) :: 2001/01/01 01:00:00
+"2001-1-1".to_timestamp(Test.t4) :: 2001/01/01 00:00:00
+"mudwolf".to_timestamp(Test.t4) :: 2015/08/25 17:31:00
+"8/25/2015 01:01:01".to_timestamp() ::
+"-135".to_latitude() :: -45.0
+"-45".to_latitude() :: -45.0
+"0".to_latitude() :: 0.0
+"45".to_latitude() :: 45.0
+"135".to_latitude() :: 45.0
+"mudwolf".to_latitude() ::
+"-135".to_latitude(Test.y3) :: -45.0
+"-45".to_latitude(Test.y3) :: -45.0
+"0".to_latitude(Test.y3) :: 0.0
+"45".to_latitude(Test.y3) :: 45.0
+"135".to_latitude(Test.y3) :: 45.0
+"mudwolf".to_latitude(Test.y3) :: 75.0
+"225".to_longitude() :: -135.0
+"135".to_longitude() :: 135.0
+"0".to_longitude() :: 0.0
+"-135".to_longitude() :: -135.0
+"-225".to_longitude() :: 135.0
+"mudwolf".to_longitude() ::
+"225".to_longitude(Test.x1) :: -135.0
+"135".to_longitude(Test.x1) :: 135.0
+"0".to_longitude(Test.x1) :: 0.0
+"-135".to_longitude(Test.x1) :: -135.0
+"-225".to_longitude(Test.x1) :: 135.0
+"mudwolf".to_longitude(Test.x1) :: 75.0

@@ -6,7 +6,10 @@ class EvalTest < Minitest::Test
   files = [
     ['./test/files/eval_simple.txt', 'simple'],
     ['./test/files/eval_math.txt', 'math'],
-    ['./test/files/eval_array.txt', 'array']
+    ['./test/files/eval_array.txt', 'array'],
+    ['./test/files/eval_text.txt', 'text'],
+    ['./test/files/eval_location.txt', 'location'],
+    ['./test/files/eval_time.txt', 'time']
   ]
 
   FormulaFields.stdlib.add_ns '*', NumberType.new(1)
