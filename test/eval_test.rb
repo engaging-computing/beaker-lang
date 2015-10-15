@@ -6,7 +6,9 @@ class EvalTest < Minitest::Test
   files = [
     ['./test/files/eval_simple.txt', 'simple'],
     ['./test/files/eval_math.txt', 'math'],
+    ['./test/files/eval_number.txt', 'number'],
     ['./test/files/eval_array.txt', 'array'],
+    ['./test/files/eval_bool.txt', 'bool'],
     ['./test/files/eval_text.txt', 'text'],
     ['./test/files/eval_location.txt', 'location'],
     ['./test/files/eval_time.txt', 'time']
@@ -46,7 +48,7 @@ class EvalTest < Minitest::Test
         src, res = x
         lex = Lexer.lex(src)
         parse = Parser.parse(lex)
-        a = parse.map { |x| x.evaluate(curr_env)}[-1].to_s
+        a = parse.map { |y| y.evaluate(curr_env) }[-1].to_s
         assert_same_parse(src, a, res)
       end
     end

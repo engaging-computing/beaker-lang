@@ -33,7 +33,7 @@ module FormulaFields
 
   class NumberType < BaseType
     def initialize(value)
-      if value.nil?
+      if value.nil? or Float(value).nan? or value.abs == Float::INFINITY
         super(nil)
       else
         super(Float(value))
@@ -83,9 +83,9 @@ module FormulaFields
             when :mul then l.get * r.get
             when :div then l.get / r.get
             when :mod then l.get % r.get
-            when :pow then l.get**r.get
+            when :pow then (l.get < 0 and r.get.abs < 1) ? nil : l.get**r.get
             end
-        if x == Float::INFINITY
+        if x.nil? or x.abs == Float::INFINITY or x.nan?
           NumberType.new(nil)
         else
           NumberType.new(x)

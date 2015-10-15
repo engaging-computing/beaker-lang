@@ -56,8 +56,10 @@ def load_parse_test(file)
   lines = []
   File.open(file, 'r') do |f|
     f.each_line do |line|
-      l, r = line.split('::')
-      lines << [l.strip, r.strip]
+      unless line.strip.empty? or line[0, 1] == '#'
+        l, r = line.split('::')
+        lines << [l.strip, r.strip]
+      end
     end
   end
   lines

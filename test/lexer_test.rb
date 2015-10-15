@@ -19,12 +19,10 @@ class LexerTest < Minitest::Test
 
   load_lex_test('./test/files/lexer_incorrect.txt', false).each.with_index do |x, i|
     define_method("test_lexer_incorrect_#{i}") do
-      failed = false
       begin
         FormulaFields::Lexer.lex(x)
         assert false, "Should not have been able to lex '#{x}'"
       rescue RLTK::LexingError
-        failed = true
       rescue => e
         assert false, "Raised incorrect exception when parsing '#{x}': #{e.class}"
       end

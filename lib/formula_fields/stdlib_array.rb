@@ -88,7 +88,11 @@ module FormulaFields
 
     @stdlib.add_ns 'Array',
       'repeat' => FunctionType.new('repeat', lambda do |env, item, times|
-        ArrayType.new([item.get] * times.get.to_i, item.type)
+        if times.get.nil? or times.get < 0
+          ArrayType.new([], item.type)
+        else
+          ArrayType.new([item.get] * times.get.to_i, item.type)
+        end
       end, [OrContract.new([
         Contract.new(:number),
         Contract.new(:text),

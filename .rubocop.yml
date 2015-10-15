@@ -189,6 +189,9 @@ Not:
 NumericLiterals:
   MinDigits: 14
 
+ParameterLists:
+  Enabled: false
+
 # Offence count: 5
 # Cop supports --auto-correct.
 # Configuration parameters: AllowSafeAssignment.
@@ -270,7 +273,7 @@ SpaceAfterMethodName:
 # Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SpaceBeforeBlockParameters.
 SpaceBeforeBlockBraces:
   Enabled: true
-  
+
 SpaceInsideBlockBraces:
   Enabled: ture
 
@@ -314,7 +317,7 @@ Tab:
 # Cop supports --auto-correct.
 TrailingBlankLines:
   Enabled: false
-  
+
 # Offence count: 1
 # Configuration parameters: EnforcedStyleForMultiline, SupportedStyles.
 TrailingComma:
@@ -354,22 +357,22 @@ WordArray:
 
 Next:
   Enabled: false
-  
+
 GuardClause:
   Enabled: false
 
 EachWithObject:
   Enabled: false
-  
+
 UnusedBlockArgument:
   Enabled: false
-  
+
 ClassAndModuleChildren:
   Enabled: false
 
 For:
   Enabled: true
-  
+
 PerceivedComplexity:
   Enabled: false
-  
+

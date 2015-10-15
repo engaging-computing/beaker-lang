@@ -60,6 +60,8 @@ module FormulaFields
         NumberType.arithmetic(:mul, l, r)
       elsif l.type == :text and r.type == :number
         TextType.repeat(l, r)
+      elsif l.type == :number and r.type == :text
+        TextType.repeat(r, l)
       else
         fail ArgumentTypeError.new('*', [:number, :number], [l.type, r.type])
       end

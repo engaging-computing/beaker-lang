@@ -69,6 +69,10 @@ False || False && False || True :: False
 -37 % -23 :: -14.0
 1 + 2 + 3 + 4 + 5 :: 15.0
 -1 ^ 4 :: 1.0
+1 + "cat" :: "1.0cat"
+"cat" + 1 :: "cat1.0"
+-2.3 * "cat" :: "ctactac"
+"cat" * -2.3 :: "ctactac"
 "dog" + "cat" * -2 :: "dogtactac"
 13231321 % 31 :: 25.0
 321 % 78 % 15 :: 9.0
