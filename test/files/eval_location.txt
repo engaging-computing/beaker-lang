@@ -1,0 +1,9 @@
+Test.x1.to_number() :: 75.0
+Test.x1.to_text() :: "75.0"
+Test.x1.to_degrees() :: 75.0
+Test.x1.to_radians() :: 1.3089969389957472
+Test.y2.to_number() :: 90.0
+Test.y2.to_text() :: "90.0"
+Test.y2.to_degrees() :: 90.0
+Test.y2.to_radians() :: 1.5707963267948966
+Location.distance(Test.x1, Test.y1, Test.x2, Test.y2) :: 1.5707963267948966

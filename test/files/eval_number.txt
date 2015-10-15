@@ -1,0 +1,43 @@
+5.to_text() :: "5.0"
+0.to_text() :: "0.0"
+(-5).to_text() :: "-5.0"
+
+5.to_timestamp() :: 1970/01/01 00:00:05
+0.to_timestamp() :: 1970/01/01 00:00:00
+(-5).to_timestamp() :: 1969/12/31 23:59:55
+
+135.to_latitude() :: 45.0
+45.to_latitude() :: 45.0
+0.to_latitude() :: 0.0
+(-45).to_latitude() :: -45.0
+(-135).to_latitude() :: -45.0
+
+135.to_latitude_degrees() :: 45.0
+45.to_latitude_degrees() :: 45.0
+0.to_latitude_degrees() :: 0.0
+(-45).to_latitude_degrees() :: -45.0
+(-135).to_latitude_degrees() :: -45.0
+
+(3 * Math.pi / 4).to_latitude_radians() :: 45.0
+(Math.pi / 4).to_latitude_radians() :: 45.0
+0.to_latitude_radians() :: 0.0
+(-Math.pi / 4).to_latitude_radians() :: -45.0
+(-3 * Math.pi / 4).to_latitude_radians() :: -45.0
+
+225.to_longitude() :: -135.0
+135.to_longitude() :: 135.0
+0.to_longitude() :: 0.0
+(-135).to_longitude() :: -135.0
+(-225).to_longitude() :: 135.0
+
+225.to_longitude_degrees() :: -135.0
+135.to_longitude_degrees() :: 135.0
+0.to_longitude_degrees() :: 0.0
+(-135).to_longitude_degrees() :: -135.0
+(-225).to_longitude_degrees() :: 135.0
+
+(5 * Math.pi / 4).to_longitude_radians() :: -135.0
+(3 * Math.pi / 4).to_longitude_radians() :: 135.0
+0.to_longitude_radians() :: 0.0
+(-3 * Math.pi / 4).to_longitude_radians() :: -135.0
+(-5 * Math.pi / 4).to_longitude_radians() :: 135.0

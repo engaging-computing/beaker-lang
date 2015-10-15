@@ -70,7 +70,8 @@ module FormulaFields
           conv_delta = convs.reduce(delta, :/)
           NumberType.new(conv_delta)
         end
-      end, [Contract.new(:timestamp), Contract.new(:timestamp), Contract.new(:text, true)])
+      end, [Contract.new(:timestamp), Contract.new(:timestamp), Contract.new(:text, true)]),
+      'new' => create_timestamp
   end
 
   private
@@ -93,6 +94,26 @@ module FormulaFields
         TextType.new(this.get.strftime(fmt))
       end
     end, [MethodContract.new])
+  end
+
+  def self.create_timestamp
+    FunctionType.new('new', lambda do |env, yr, mo, dy, hr, mi, sc|
+      yr = yr.is_nothing? ? 0 : yr.get
+      mo = mo.nil? || mo.is_nothing? ? 1 : mo.get
+      dy = dy.nil? || dy.is_nothing? ? 1 : dy.get
+      hr = hr.nil? || hr.is_nothing? ? 0 : hr.get
+      mi = mi.nil? || mi.is_nothing? ? 0 : mi.get
+      sc = sc.nil? || sc.is_nothing? ? 0 : sc.get
+
+      total_months = (yr * 12) + (mo - 1)
+      total_days = (dy - 1) + (hr / 24) + (mi / 1440) + (sc / 86400)
+
+      new_date = DateTime.new(0, 1, 1, 0, 0, 0)
+      new_date = new_date >> total_months
+      new_date += total_days
+
+      TimestampType.new(new_date)
+    end, [Contract.new(:number)] + [Contract.new(:number, true)] * 5)
   end
 end
 

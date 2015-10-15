@@ -71,9 +71,9 @@ module FormulaFields
 
         pos_end = pos_start + pos_elems
         array = if pos_start < pos_end
-                  (pos_start ... pos_end).to_a
+                  (pos_start...pos_end).to_a
                 else
-                  (pos_end + 1 ... pos_start + 1).to_a.reverse
+                  (pos_end + 1...pos_start + 1).to_a.reverse
                 end
         ArrayType.new(array.map { |x| this.get[x] }, this.contains)
       end, [MethodContract.new, Contract.new(:number), Contract.new(:number)]),
@@ -88,7 +88,11 @@ module FormulaFields
 
     @stdlib.add_ns 'Array',
       'repeat' => FunctionType.new('repeat', lambda do |env, item, times|
-        ArrayType.new([item.get] * times.get.to_i, item.type)
+        if times.get.nil? or times.get < 0
+          ArrayType.new([], item.type)
+        else
+          ArrayType.new([item.get] * times.get.to_i, item.type)
+        end
       end, [OrContract.new([
         Contract.new(:number),
         Contract.new(:text),
@@ -103,9 +107,9 @@ module FormulaFields
           ArrayType.new([], :number)
         else
           basic_array = if times.get > 0
-                          (0 ... times.get.to_i).to_a
+                          (0...times.get.to_i).to_a
                         elsif times.get < 0
-                          (times.get.to_i + 1 ... 1).to_a.reverse
+                          (times.get.to_i + 1...1).to_a.reverse
                         else
                           []
                         end

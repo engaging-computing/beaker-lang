@@ -57,7 +57,7 @@ module FormulaFields
   def self.numeric_unary(func_name)
     func = lambda do |_, x|
       begin
-        NumberType.new(Numeric.send(func_name, x.get))
+        NumberType.new((x.get).send(func_name))
       rescue
         NumberType.new(nil)
       end
@@ -83,7 +83,10 @@ module FormulaFields
       if x.is_nothing?
         NumberType.new(0)
       else
-        NumberType.new(x.get.reduce { |a, e| a + e.to_f })
+        sum = x.get.reduce 0 do |a, e|
+          e.nil? ? a : a + e.to_f
+        end
+        NumberType.new(sum)
       end
     end
     FunctionType.new('sum', func, [Contract.new([:number])])
@@ -94,12 +97,8 @@ module FormulaFields
       if x.is_nothing?
         NumberType.new(1)
       else
-        product = x.get.reduce do |a, e|
-          if e.nil?
-            a
-          else
-            a * (e.nil? ? 1 : e.to_f)
-          end
+        product = x.get.reduce 1 do |a, e|
+          e.nil? ? a : a * e.to_f
         end
         NumberType.new(product)
       end
@@ -113,8 +112,10 @@ module FormulaFields
       if x.is_nothing?
         NumberType.new(nil)
       else
-        mean = x.get.reduce { |a, e| a + e.to_f } / x.get.length
-        NumberType.new(mean)
+        sum = x.get.reduce 0 do |a, e|
+          e.nil? ? a : a + e.to_f
+        end
+        NumberType.new(sum / x.get.length)
       end
     end
 
@@ -126,8 +127,14 @@ module FormulaFields
       if x.is_nothing?
         NumberType.new(nil)
       else
-        mean = x.get.reduce { |a, e| a + e.to_f } / x.get.length
-        variance = x.get.reduce { |a, e| a + (e.to_f + mean)**2 } / x.get.length
+        sum = x.get.reduce 0 do |a, e|
+          e.nil? ? a : a + e.to_f
+        end
+        mean = sum / x.get.length
+        variance_inner = x.get.reduce 0 do |a, e|
+          e.nil? ? a : a + (e.to_f - mean)**2
+        end
+        variance = variance_inner / x.get.length
         NumberType.new(variance)
       end
     end
@@ -140,8 +147,14 @@ module FormulaFields
       if x.is_nothing?
         NumberType.new(nil)
       else
-        mean = x.get.reduce { |a, e| a + e.to_f } / x.get.length
-        variance = x.get.reduce { |a, e| a + (e.to_f + mean)**2 } / x.get.length
+        sum = x.get.reduce 0 do |a, e|
+          e.nil? ? a : a + e.to_f
+        end
+        mean = sum / x.get.length
+        variance_inner = x.get.reduce 0 do |a, e|
+          e.nil? ? a : a + (e.to_f - mean)**2
+        end
+        variance = variance_inner / x.get.length
         NumberType.new(Math.sqrt(variance))
       end
     end
@@ -151,7 +164,7 @@ module FormulaFields
 
   def self.binary_cmp(op)
     func = lambda do |_, l, r|
-      if l.is_nothing? and r.is_nothing
+      if l.is_nothing? and r.is_nothing?
         NumberType.new(nil)
       elsif l.is_nothing?
         r

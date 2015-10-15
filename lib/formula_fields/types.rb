@@ -33,7 +33,7 @@ module FormulaFields
 
   class NumberType < BaseType
     def initialize(value)
-      if value.nil?
+      if value.nil? or Float(value).nan? or value.abs == Float::INFINITY
         super(nil)
       else
         super(Float(value))
@@ -83,9 +83,9 @@ module FormulaFields
             when :mul then l.get * r.get
             when :div then l.get / r.get
             when :mod then l.get % r.get
-            when :pow then l.get**r.get
+            when :pow then (l.get < 0 and r.get.abs < 1) ? nil : l.get**r.get
             end
-        if x == Float::INFINITY
+        if x.nil? or x.abs == Float::INFINITY or x.nan?
           NumberType.new(nil)
         else
           NumberType.new(x)
@@ -131,6 +131,10 @@ module FormulaFields
       end
     end
 
+    def to_s
+      "\"#{@value}\""
+    end
+
     def self.concatenate(l, r)
       temp_l = l.get.to_s
       temp_r = r.get.to_s
@@ -145,7 +149,7 @@ module FormulaFields
         base = r.get.abs.floor
         part = r.get.abs - base
 
-        newstr = l.get * base  + l.get[0, (l.get.length * part).round]
+        newstr = l.get * base + l.get[0, (l.get.length * part).round]
         if sign == 1
           TextType.new(newstr)
         else
@@ -364,7 +368,7 @@ module FormulaFields
           fail ArgumentCountError.new(@name, @contract.length, args.length)
         end
       elsif !follows_contract?(args)
-        contract_types = @contract.map { |x| x.to_s }
+        contract_types = @contract.map(&:to_s)
         arg_types = args.map { |x| x.type.to_s }
         fail ArgumentTypeError.new(@name, contract_types, arg_types)
       else
@@ -481,7 +485,6 @@ module FormulaFields
     when :latitude then LatitudeType.new(nil)
     when :longitude then LongitudeType.new(nil)
     when :timestamp then TimestampType.new(nil)
-    else nil
     end
   end
 
@@ -492,7 +495,6 @@ module FormulaFields
     when :latitude then LatitudeType.new(value)
     when :longitude then LongitudeType.new(value)
     when :timestamp then TimestampType.new(value)
-    else nil
     end
   end
 end

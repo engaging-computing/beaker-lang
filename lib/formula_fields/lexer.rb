@@ -17,7 +17,7 @@ module FormulaFields
 
     # Arithmetic Operators
     rule(/[+-]/) { |t| [:ADDOP, t] }
-    rule(/[*\/]/) { |t| [:MULOP, t] }
+    rule(%r{[*\/]}) { |t| [:MULOP, t] }
     rule(/\^/) { |t| [:POWOP, t] }
     rule(/%/) { |t| [:MODOP, t] }
 
@@ -39,10 +39,10 @@ module FormulaFields
     rule(/\d*\.\d+e\d+/) { |t| [:LITERAL, t.to_f] }
 
     # String Literal
-    rule(/"[^"]*"/) { |t| [:LITERAL, t] }
-    rule(/'[^']*'/) { |t| [:LITERAL, t] }
+    rule(/((\"\")|(\"([^"]|\\\")*[^\\]\"))/) { |t| [:LITERAL, t] }
+    rule(/((\'\')|(\'([^']|\\\')*[^\\]\'))/) { |t| [:LITERAL, t] }
 
     # Identifier
-    rule(/[\w_](?:[\w\d_])*/) { |t| [:IDENTIFIER, t] }
+    rule(/[A-Za-z_](?:[A-Za-z\d_])*/) { |t| [:IDENTIFIER, t] }
   end
 end

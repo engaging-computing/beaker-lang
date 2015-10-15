@@ -1,0 +1,4 @@
+True.to_number() :: 1.0
+False.to_number() :: 0.0
+True.to_text() :: "True"
+False.to_text() :: "False"

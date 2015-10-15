@@ -60,6 +60,8 @@ module FormulaFields
         NumberType.arithmetic(:mul, l, r)
       elsif l.type == :text and r.type == :number
         TextType.repeat(l, r)
+      elsif l.type == :number and r.type == :text
+        TextType.repeat(r, l)
       else
         fail ArgumentTypeError.new('*', [:number, :number], [l.type, r.type])
       end
@@ -179,7 +181,7 @@ module FormulaFields
     end
 
     def to_s
-      "(neq? #{@left} #{@right})"
+      "(ne? #{@left} #{@right})"
     end
   end
 
@@ -321,7 +323,7 @@ module FormulaFields
       if args.length == 0
         "(#{@name})"
       else
-        args = @args.map { |x| x.to_s }.join(' ')
+        args = @args.map(&:to_s).join(' ')
         "(#{@name} #{args})"
       end
     end
@@ -386,7 +388,7 @@ module FormulaFields
     end
 
     def to_s
-      value
+      "\"#{@value[1, @value.length - 2]}\""
     end
   end
 end

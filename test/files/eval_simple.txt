@@ -1,0 +1,84 @@
+True || True :: True
+True || False :: True
+False || True :: True
+False || False :: False
+True && True :: True
+True && False :: False
+False && True :: False
+False && False :: False
+True == True :: True
+True == False :: False
+False == True :: False
+False == False :: True
+True != True :: False
+True != False :: True
+False != True :: True
+False != False :: False
+!True :: False
+!False :: True
+!False && False :: False
+if(True, 1, 2) :: 1.0
+if(False, 1, 2) :: 2.0
+if (True, 1, 2) :: 1.0
+if(1 > 2, False, True) == !(1 > 2) :: True
+1 == 1 :: True
+1 == 2 :: False
+1 != 1 :: False
+1 != 2 :: True
+0.1 + 0.2 == 0.3 :: True
+0.00001 + 0.00002 == 0.00003 :: True
+1000.1 + 1000.2 == 2000.3 :: True
+1 < 2 :: True
+1 < 1 :: False
+1 < 0 :: False
+1 <= 2 :: True
+1 <= 1 :: True
+1 <= 0 :: False
+1 > 2 :: False
+1 > 1 :: False
+1 > 0 :: True
+1 >= 2 :: False
+1 >= 1 :: True
+1 >= 0 :: True
+"cat" == "cat" :: True
+"cat" == "dog" :: False
+"cat" != "cat" :: False
+"cat" != "dog" :: True
+"banana" < "apple" :: False
+"banana" < "banana" :: False
+"banana" < "carrot" :: True
+"banana" <= "apple" :: False
+"banana" <= "banana" :: True
+"banana" <= "carrot" :: True
+"banana" > "apple" :: True
+"banana" > "banana" :: False
+"banana" > "carrot" :: False
+"banana" >= "apple" :: True
+"banana" >= "banana" :: True
+"banana" >= "carrot" :: False
+True || False && False || False :: False
+False || False && False || True :: False
+1 + 2 + 3 :: 6.0
+1 - 2 - 3 :: -4.0
+1 * 2 * 3 :: 6.0
+1 / 2 / 4 :: 0.125
+2 ^ 3 ^ 4 :: 2.4178516392292583e+24
+37 % 23 :: 14.0
+37 % -23 :: -9.0
+-37 % 23 :: 9.0
+-37 % -23 :: -14.0
+1 + 2 + 3 + 4 + 5 :: 15.0
+-1 ^ 4 :: 1.0
+1 + "cat" :: "1.0cat"
+"cat" + 1 :: "cat1.0"
+-2.3 * "cat" :: "ctactac"
+"cat" * -2.3 :: "ctactac"
+"dog" + "cat" * -2 :: "dogtactac"
+13231321 % 31 :: 25.0
+321 % 78 % 15 :: 9.0
+(1 + 2) / (5 + 7) :: 0.25
+1 / 0 ::
+a = 1 :: 1.0
+a = (b = (c = 3)) :: 3.0
++-+-+----+-3 :: -3.0
++-+-+---+-3 :: 3.0

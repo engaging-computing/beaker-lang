@@ -1,4 +1,3 @@
-require './formula_fields.rb'
 include FormulaFields
 
 module TestCode
@@ -164,7 +163,8 @@ module TestCode
     ['Test.b.to_text()', TextType.new('[a, b, c]')],
     ['Test.c.to_text()', TextType.new('[30.0, 60.0, 90.0, 60.0, 30.0]')],
     ['Test.d.to_text()', TextType.new('[45.0, 90.0, 135.0, -180.0, -135.0, -90.0]')],
-    ['Test.e.to_text()', TextType.new('[2015/01/01 01:01:01, 2016/01/01 01:01:01, 2017/01/01 01:01:01, 2018/01/01 01:01:01, 2019/01/01 01:01:01]')],
+    ['Test.e.to_text()', TextType.new(
+      '[2015/01/01 01:01:01, 2016/01/01 01:01:01, 2017/01/01 01:01:01, 2018/01/01 01:01:01, 2019/01/01 01:01:01]')],
     ['Test.a.reverse()', ArrayType.new([5, 4, 3, 2, 1], :number)],
     ['Array.repeat(1, 5)', ArrayType.new([1, 1, 1, 1, 1], :number)],
     ['Array.repeat("a", 3)', ArrayType.new(['a', 'a', 'a'], :text)],
