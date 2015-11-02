@@ -82,6 +82,7 @@ module FormulaFields
         @num = error.current.position.line_number
         @pos = error.current.position.line_offset
       end
+
       @msg = "Unexpected token #{@token} at #{@num}:#{@pos + 1}\n  #{line.chomp}\n  #{'~' * @pos}^"
     end
   end
@@ -92,7 +93,7 @@ module FormulaFields
 
     def initialize(path)
       @path = path
-      @msg = "#{path.join ':'} is read_only"
+      @msg = "#{path.join ':'} is read only"
     end
   end
 end

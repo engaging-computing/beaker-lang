@@ -5,4 +5,5 @@ gemspec
 
 group :development, :test do
   gem 'rubocop', git: 'https://github.com/bbatsov/rubocop'
+  gem 'simplecov', require: false
 end

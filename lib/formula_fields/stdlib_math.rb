@@ -178,16 +178,11 @@ module FormulaFields
     FunctionType.new(op.to_s, func, [Contract.new(:number), Contract.new(:number)])
   end
 
-  def self.array_cmp(op, str_name = nil)
+  def self.array_cmp(op, str_name)
     func = lambda do |_, x|
       NumberType.new(x.get.send(op))
     end
-
-    if str_name.nil?
-      FunctionType.new(op.to_s, func, [Contract.new([:number])])
-    else
-      FunctionType.new(str_name, func, [Contract.new([:number])])
-    end
+    FunctionType.new(str_name, func, [Contract.new([:number])])
   end
 end
 
