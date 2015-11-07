@@ -5,7 +5,7 @@ class ParserTest < Minitest::Test
     define_method("test_parser_simple_#{i}") do
       src, res = x
       lex = FormulaFields::Lexer.lex(src)
-      parse = FormulaFields::Parser.parse(lex)[0].to_s
+      parse = FormulaFields::Parser.parse(src, lex)[0].to_s
       assert_same_parse(src, parse, res)
     end
   end
@@ -14,7 +14,7 @@ class ParserTest < Minitest::Test
     define_method("test_parser_multiline_#{i}") do
       src, res = x
       lex = FormulaFields::Lexer.lex(src)
-      parse = FormulaFields::Parser.parse(lex).join(';')
+      parse = FormulaFields::Parser.parse(src, lex).join(';')
       assert_same_parse(src, parse, res)
     end
   end

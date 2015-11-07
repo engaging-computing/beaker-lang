@@ -2,6 +2,12 @@ require 'rltk/parser'
 
 module FormulaFields
   class Parser < RLTK::Parser
+    def self.parse(line, tokens, opts = {})
+      super(tokens, opts)
+    rescue RLTK::NotInLanguage => e
+      raise ParseError.new(e, line)
+    end
+
     production(:expr) do
       clause('assexpr') { |x| [x] }
       clause('NEWLINE+') { |_| [] }
@@ -9,7 +15,7 @@ module FormulaFields
     end
 
     production(:assexpr) do
-      clause('.name ASSIGN .assexpr') { |x, y| Assign.new([x], y) }
+      clause('.name ASSIGN .assexpr') { |x, y| Assign.new(x, y) }
       clause('andexpr') { |x| x }
     end
 

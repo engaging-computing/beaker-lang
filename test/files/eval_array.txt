@@ -4,6 +4,13 @@ Test.c.type() :: "Latitude"
 Test.d.type() :: "Longitude"
 Test.e.type() :: "Timestamp"
 
+Test.a.length() :: 5.0
+Test.b.length() :: 3.0
+Test.c.length() :: 5.0
+Test.d.length() :: 6.0
+Test.e.length() :: 5.0
+Test.f.length() :: 5.0
+
 Test.a.curr() :: 2.0
 Test.a.curr(0) :: 2.0
 Test.a.curr(-1) :: 1.0
@@ -27,6 +34,7 @@ Test.a.at(0) :: 1.0
 Test.a.at(1) :: 2.0
 Test.a.at(-1) ::
 Test.a.at(-1, 24) :: 24.0
+Test.f.at(4) ::
 
 Test.a.first() :: 1.0
 Test.a.first(0) :: 1.0
@@ -63,6 +71,9 @@ Array.repeat(70.to_longitude(), 3) :: [70.0, 70.0, 70.0]
 Array.repeat("2001-1-1".to_timestamp(), 3) :: [2001/01/01 00:00:00, 2001/01/01 00:00:00, 2001/01/01 00:00:00]
 
 Array.count(5, 0) :: []
+Array.count(5, 1/0) :: []
+Array.count(1/0, 5) :: [0.0, 1.0, 2.0, 3.0, 4.0]
+Array.count(1/0, 1/0) :: []
 Array.count(5, 3) :: [5.0, 6.0, 7.0]
 Array.count(5, -3) :: [5.0, 4.0, 3.0]
 Array.count(-5, 3) :: [-5.0, -4.0, -3.0]

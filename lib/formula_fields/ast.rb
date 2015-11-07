@@ -22,7 +22,8 @@ module FormulaFields
     def evaluate(env)
       l, r = super(env)
 
-      if l.type == :text or r.type == :text
+      compat = [[:text, :number], [:number, :text], [:text, :text]]
+      if compat.include? [l.type, r.type]
         TextType.concatenate(l, r)
       elsif l.type == :number and r.type == :number
         NumberType.arithmetic(:add, l, r)
@@ -347,24 +348,18 @@ module FormulaFields
   end
 
   class Assign < Expression
-    child :left, [UnresolvedName]
+    child :left, UnresolvedName
     child :right, Expression
 
     def evaluate(env)
       r = @right.evaluate(env)
-      @left.each do |left|
-        l = left.evaluate(env)
-        env.assign(l, r)
-      end
+      l = left.evaluate(env)
+      env.assign(l, r)
       r
     end
 
     def to_s
-      if @left.length > 1
-        "(let (#{@left.join ', '}) #{@right})"
-      else
-        "(let #{@left[0]} #{@right})"
-      end
+      "(let #{@left} #{@right})"
     end
   end
 
@@ -372,7 +367,7 @@ module FormulaFields
     value :value, Float
 
     def evaluate(_)
-      NumberType.new(@value)
+      FormulaFields::NumberType.new(@value)
     end
 
     def to_s
@@ -384,7 +379,7 @@ module FormulaFields
     value :value, String
 
     def evaluate(_)
-      TextType.new(@value[1, @value.length - 2])
+      FormulaFields::TextType.new(@value[1, @value.length - 2])
     end
 
     def to_s

@@ -27,6 +27,7 @@ module FormulaFields
                       class_lookup = @class[table.type]
                       class_lookup.nil? ? nil : class_lookup[name]
                     end
+
       if look_result.nil?
         if !@parent.nil? and @scope.nil?
           @parent.lookup(name)
