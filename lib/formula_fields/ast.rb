@@ -362,22 +362,6 @@ module FormulaFields
     end
   end
 
-  class Assign < Expression
-    child :left, UnresolvedName
-    child :right, Expression
-
-    def evaluate(env)
-      r = @right.evaluate(env)
-      l = left.evaluate(env)
-      env.assign(l, r)
-      r
-    end
-
-    def to_s
-      "(let #{@left} #{@right})"
-    end
-  end
-
   class NumberLiteral < Expression
     value :value, Float
 

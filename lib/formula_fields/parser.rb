@@ -8,22 +8,6 @@ module FormulaFields
       raise ParseError.new(e, line)
     end
 
-    production(:expr) do
-      clause('assexpr') { |x| [x] }
-      clause('NEWLINE+') { |_| [] }
-      clause('.assexpr NEWLINE+ .expr') { |x, y| [x] + y }
-    end
-
-    production(:assexpr) do
-      clause('.name ASSIGN .assexpr') { |x, y| Assign.new(x, y) }
-      clause('andexpr') { |x| x }
-    end
-
-    production(:name) do
-      clause('IDENTIFIER') { |x| UnresolvedName.new(x, nil) }
-      clause('.name PERIOD .IDENTIFIER') { |x, y| UnresolvedName.new(y, x) }
-    end
-
     production(:andexpr) do
       clause('orexpr') { |x| x }
       clause('.andexpr NEWLINE* AND NEWLINE* .orexpr') { |x, z| And.new(x, z) }
@@ -86,7 +70,7 @@ module FormulaFields
 
     production(:identexpr) do
       clause('IDENTIFIER') { |x| Name.new(x) }
-      clause('OPENP NEWLINE* .assexpr NEWLINE* CLOSEP') { |x| x }
+      #clause('OPENP NEWLINE* .assexpr NEWLINE* CLOSEP') { |x| x }
       clause('LITERAL') { |x| x.is_a?(Numeric) ? NumberLiteral.new(Float(x)) : StringLiteral.new(String(x)) }
     end
 

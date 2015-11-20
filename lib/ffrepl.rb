@@ -44,7 +44,7 @@ loop do
   end
 
   begin
-    p = Parser.parse(input.chomp, l, verbose: false)[0]
+    p = Parser.parse(input.chomp, l, verbose: false)
   rescue RLTK::NotInLanguage => e
     puts ParseError.new(e, input)
     next

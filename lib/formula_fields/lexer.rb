@@ -6,9 +6,6 @@ module FormulaFields
     rule(/[ \t\r\f]/)
     rule(/\n+/) { |t| [:NEWLINE, t] }
 
-    # Assignment
-    rule(/\=/) { |t| [:ASSIGN, t] }
-
     # Separation
     rule(/\(/) { |t| [:OPENP, t] }
     rule(/\)/) { |t| [:CLOSEP, t] }
