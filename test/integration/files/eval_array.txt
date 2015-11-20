@@ -1,0 +1,55 @@
+Test.a.type() :: "Number"
+Test.b.type() :: "Text"
+Test.c.type() :: "Latitude"
+Test.d.type() :: "Longitude"
+Test.e.type() :: "Timestamp"
+
+Test.a.length() :: 5.0
+Test.b.length() :: 3.0
+Test.c.length() :: 5.0
+Test.d.length() :: 6.0
+Test.e.length() :: 5.0
+Test.f.length() :: 5.0
+
+Test.a.get() :: 2.0
+
+prev(Test.a).get() :: 1.0
+prev_p(Test.a, 0).get() :: 2.0
+prev_p(Test.a, -1).get() :: 3.0
+prev_p(Test.a, 1).get() :: 1.0
+prev_p(Test.a, 2).get() ::
+prev_p(Test.a, 20, 22).get() :: 22.0
+
+next(Test.a).get() :: 3.0
+next_p(Test.a, 0).get() :: 2.0
+next_p(Test.a, 1).get() :: 3.0
+next_p(Test.a, -1).get() :: 1.0
+next_p(Test.a, 20, 23).get() :: 23.0
+
+first(Test.a).get() :: 1.0
+first_p(Test.a, 0).get() :: 1.0
+first_p(Test.a, 1).get() :: 2.0
+first_p(Test.a, -1).get() ::
+first_p(Test.a, -1, 24).get() :: 24.0
+first_p(Test.f, 4).get() ::
+
+first(Test.a).get() :: 1.0
+first_p(Test.a, 0).get() :: 1.0
+first_p(Test.a, 1).get() :: 2.0
+first_p(Test.a, -1).get() ::
+first_p(Test.a, -1, 25).get() :: 25.0
+
+last(Test.a).get() :: 5.0
+last_p(Test.a, 0).get() :: 5.0
+last_p(Test.a, 1).get() :: 4.0
+last_p(Test.a, -1).get() ::
+last_p(Test.a, -1, 26).get() :: 26.0
+
+Test.a.to_text() :: "[1.0, 2.0, 3.0, 4.0, 5.0]"
+Test.b.to_text() :: "["a", "b", "c"]"
+Test.c.to_text() :: "[30.0, 60.0, 90.0, 60.0, 30.0]"
+Test.d.to_text() :: "[45.0, 90.0, 135.0, -180.0, -135.0, -90.0]"
+Test.e.to_text() :: "[2015/01/01 01:01:01, 2016/01/01 01:01:01, 2017/01/01 01:01:01, 2018/01/01 01:01:01, 2019/01/01 01:01:01]"
+
+Test.a.reverse() :: [5.0, 4.0, 3.0, 2.0, 1.0]
+Test.b.reverse() :: ["c", "b", "a"]

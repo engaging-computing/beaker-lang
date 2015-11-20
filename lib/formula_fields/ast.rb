@@ -21,14 +21,18 @@ module FormulaFields
   class Add < Binary
     def evaluate(env)
       l, r = super(env)
+      l_type = FormulaFields.inner_type(l)
+      r_type = FormulaFields.inner_type(r)
 
       compat = [[:text, :number], [:number, :text], [:text, :text]]
-      if compat.include? [l.type, r.type]
-        TextType.concatenate(l, r)
-      elsif l.type == :number and r.type == :number
-        NumberType.arithmetic(:add, l, r)
-      else
-        fail ArgumentTypeError.new('+', [:number, :number], [l.type, r.type])
+      case [l_type, r_type]
+      when [:number, :number] then NumberType.arithmetic(:add, l, r)
+      when [:number, :text] then TextType.concatenate(l, r)
+      when [:text, :number] then TextType.concatenate(l, r)
+      when [:text, :text] then TextType.concatenate(l, r)
+      when [:number, :timestamp] then TimestampType.offset(r, l)
+      when [:timestamp, :number] then TimestampType.offset(l, r)
+      else fail ArgumentTypeError.new('+', [:number, :number], [l_type, r_type])
       end
     end
 
@@ -40,11 +44,14 @@ module FormulaFields
   class Sub < Binary
     def evaluate(env)
       l, r = super(env)
+      l_type = FormulaFields.inner_type(l)
+      r_type = FormulaFields.inner_type(r)
 
-      if l.type == :number and r.type == :number
-        NumberType.arithmetic(:sub, l, r)
-      else
-        fail ArgumentTypeError.new('-', [:number, :number], [l.type, r.type])
+      case [l_type, r_type]
+      when [:number, :number] then NumberType.arithmetic(:sub, l, r)
+      when [:location, :location] then LocationType.distance(l, r)
+      when [:timestamp, :timestamp] then TimestampType.elapsed(l, r)
+      else fail ArgumentTypeError.new('-', [:number, :number], [l_type, r_type])
       end
     end
 
@@ -56,15 +63,17 @@ module FormulaFields
   class Mul < Binary
     def evaluate(env)
       l, r = super(env)
+      l_type = FormulaFields.inner_type(l)
+      r_type = FormulaFields.inner_type(r)
 
-      if l.type == :number and r.type == :number
+      if l_type == :number and r_type == :number
         NumberType.arithmetic(:mul, l, r)
-      elsif l.type == :text and r.type == :number
+      elsif l_type == :text and r_type == :number
         TextType.repeat(l, r)
-      elsif l.type == :number and r.type == :text
+      elsif l_type == :number and r_type == :text
         TextType.repeat(r, l)
       else
-        fail ArgumentTypeError.new('*', [:number, :number], [l.type, r.type])
+        fail ArgumentTypeError.new('*', [:number, :number], [l_type, r_type])
       end
     end
 
@@ -76,11 +85,13 @@ module FormulaFields
   class Div < Binary
     def evaluate(env)
       l, r = super(env)
+      l_type = FormulaFields.inner_type(l)
+      r_type = FormulaFields.inner_type(r)
 
-      if l.type == :number and r.type == :number
+      if l_type == :number and r_type == :number
         NumberType.arithmetic(:div, l, r)
       else
-        fail ArgumentTypeError.new('/', [:number, :number], [l.type, r.type])
+        fail ArgumentTypeError.new('/', [:number, :number], [l_type, r_type])
       end
     end
 
@@ -92,11 +103,13 @@ module FormulaFields
   class Mod < Binary
     def evaluate(env)
       l, r = super(env)
+      l_type = FormulaFields.inner_type(l)
+      r_type = FormulaFields.inner_type(r)
 
-      if l.type == :number and r.type == :number
+      if l_type == :number and r_type == :number
         NumberType.arithmetic(:mod, l, r)
       else
-        fail ArgumentTypeError.new('%', [:number, :number], [l.type, r.type])
+        fail ArgumentTypeError.new('%', [:number, :number], [l_type, r_type])
       end
     end
 
@@ -108,11 +121,13 @@ module FormulaFields
   class Pow < Binary
     def evaluate(env)
       l, r = super(env)
+      l_type = FormulaFields.inner_type(l)
+      r_type = FormulaFields.inner_type(r)
 
-      if l.type == :number and r.type == :number
+      if l_type == :number and r_type == :number
         NumberType.arithmetic(:pow, l, r)
       else
-        fail ArgumentTypeError.new('^', [:number, :number], [l.type, r.type])
+        fail ArgumentTypeError.new('^', [:number, :number], [l_type, r_type])
       end
     end
 

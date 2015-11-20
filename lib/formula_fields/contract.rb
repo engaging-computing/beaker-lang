@@ -3,6 +3,18 @@ module FormulaFields
     object.type == :array ? [object.contains] : object.type
   end
 
+  def self.match(object, type)
+    if object.type == :array and type == :array
+      true
+    elsif object.type == :array and type.is_a? Array
+      type == [object.contains]
+    elsif object.type == :array
+      type == object.contains
+    else
+      type == object.type
+    end
+  end
+
   class BaseContract; end
 
   class Contract < BaseContract
@@ -15,7 +27,7 @@ module FormulaFields
       if object.nil?
         @optional
       else
-        FormulaFields.build_type_label(object) == @type
+        FormulaFields.match(object, @type)
       end
     end
 
@@ -46,7 +58,7 @@ module FormulaFields
       elsif @inner and this.type != :array
         false
       elsif @inner and this.type == :array
-        this.contains == FormulaFields.build_type_label(object)
+        FormulaFields.match(object, this.contains)
       else
         FormulaFields.build_type_label(this) == FormulaFields.build_type_label(object)
       end
@@ -94,15 +106,25 @@ module FormulaFields
     end
 
     def check?(object)
-      if object.nil?
-        @optional
-      else
-        true
-      end
+      object.nil? ? @optional : true
     end
 
     def to_s
       'any'
+    end
+  end
+
+  class AnyArrayContract < BaseContract
+    def initialize(optional = false)
+      @optional = optional
+    end
+
+    def check?(object)
+      object.nil? ? @optional : object.type == :array
+    end
+
+    def to_s
+      'array'
     end
   end
 end

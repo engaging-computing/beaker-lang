@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class LexerTest < Minitest::Test
-  load_lex_test('./test/files/lexer_simple.txt').each.with_index do |x, i|
+  load_lex_test('./test/integration/files/lexer_simple.txt').each.with_index do |x, i|
     define_method("test_lexer_simple_#{i}") do
       src, res = x
       lex = FormulaFields::Lexer.lex(src)
@@ -9,7 +9,7 @@ class LexerTest < Minitest::Test
     end
   end
 
-  load_lex_test('./test/files/lexer_greedy.txt').each.with_index do |x, i|
+  load_lex_test('./test/integration/files/lexer_greedy.txt').each.with_index do |x, i|
     define_method("test_lexer_greedy_#{i}") do
       src, res = x
       lex = FormulaFields::Lexer.lex(src)
@@ -17,7 +17,7 @@ class LexerTest < Minitest::Test
     end
   end
 
-  load_lex_test('./test/files/lexer_incorrect.txt', false).each.with_index do |x, i|
+  load_lex_test('./test/integration/files/lexer_incorrect.txt', false).each.with_index do |x, i|
     define_method("test_lexer_incorrect_#{i}") do
       passed = false
       begin

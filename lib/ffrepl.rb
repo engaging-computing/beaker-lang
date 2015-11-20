@@ -2,7 +2,7 @@ require 'formula_fields'
 
 include FormulaFields
 
-FormulaFields.stdlib.add_ns 'Test',
+FormulaFields.stdlib.add 'Test',
   'a' => ArrayType.new([1, 2, 3, 4, 5], :number),
   'b' => ArrayType.new(['a', 'b', 'c'], :text),
   'c' => ArrayType.new([30, 60, 90, 120, 150], :latitude),
@@ -25,7 +25,7 @@ FormulaFields.stdlib.add_ns 'Test',
   't4' => TimestampType.new('2015/8/25 17:31:00'),
   't5' => TimestampType.new('2015/8/26 13:41:32')
 
-FormulaFields.stdlib.add_ns '*', NumberType.new(1)
+FormulaFields.stdlib.add '*', NumberType.new(1)
 
 curr_env = Environment.new(false, FormulaFields.stdlib)
 
@@ -48,8 +48,12 @@ loop do
   rescue RLTK::NotInLanguage => e
     puts ParseError.new(e, input)
     next
+  rescue ParseError => e
+    puts e
+    next
   rescue => e
     puts "Unknown parse error #{e}"
+    next
   end
 
   puts "  => #{p}"

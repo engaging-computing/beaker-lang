@@ -25,24 +25,24 @@ Test.t1.offset(5, "days") :: 2015/08/29 09:31:00
 Test.t1.offset(5, "weeks") :: 2015/09/28 09:31:00
 Test.t1.offset(5, "months") :: 2016/01/24 09:31:00
 Test.t1.offset(5, "years") :: 2020/08/24 09:31:00
-Test.t1 < Test.t2 :: True
-Test.t1 < Test.t1 :: False
-Test.t2 < Test.t1 :: False
-Test.t1 <= Test.t2 :: True
-Test.t1 <= Test.t1 :: True
-Test.t2 <= Test.t1 :: False
-Test.t1 > Test.t2 :: False
-Test.t1 > Test.t1 :: False
-Test.t2 > Test.t1 :: True
-Test.t1 >= Test.t2 :: False
-Test.t1 >= Test.t1 :: True
-Test.t2 >= Test.t1 :: True
-Test.t1 == Test.t2 :: False
-Test.t1 == Test.t1 :: True
-Test.t2 == Test.t1 :: False
-Test.t1 != Test.t2 :: True
-Test.t1 != Test.t1 :: False
-Test.t2 != Test.t1 :: True
+Test.t1 < Test.t2 :: true
+Test.t1 < Test.t1 :: false
+Test.t2 < Test.t1 :: false
+Test.t1 <= Test.t2 :: true
+Test.t1 <= Test.t1 :: true
+Test.t2 <= Test.t1 :: false
+Test.t1 > Test.t2 :: false
+Test.t1 > Test.t1 :: false
+Test.t2 > Test.t1 :: true
+Test.t1 >= Test.t2 :: false
+Test.t1 >= Test.t1 :: true
+Test.t2 >= Test.t1 :: true
+Test.t1 == Test.t2 :: false
+Test.t1 == Test.t1 :: true
+Test.t2 == Test.t1 :: false
+Test.t1 != Test.t2 :: true
+Test.t1 != Test.t1 :: false
+Test.t2 != Test.t1 :: true
 Time.new(1, 1, 1, 1, 1, 1) :: 0001/01/01 01:01:01
 Time.new(1, 1, 1, 1, 1) :: 0001/01/01 01:01:00
 Time.new(1, 1, 1, 1) :: 0001/01/01 01:00:00

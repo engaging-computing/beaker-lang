@@ -7,12 +7,20 @@ module FormulaFields
       @table = {}
     end
 
-    def add_ns(name, hash)
+    def add(name, hash)
       @table[name] = hash
     end
 
     def add_class(name, hash)
       @class[name] = hash
+    end
+
+    def extend_ns(name, hash)
+      if @table.include? name
+        @table[name].merge(hash)
+      else
+        @table[name] = hash
+      end
     end
 
     def lookup(name, scope = nil)

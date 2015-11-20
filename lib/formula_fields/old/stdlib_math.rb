@@ -83,7 +83,7 @@ module FormulaFields
       if x.is_nothing?
         NumberType.new(0)
       else
-        sum = x.get.reduce 0 do |a, e|
+        sum = x.value.reduce 0 do |a, e|
           e.nil? ? a : a + e.to_f
         end
         NumberType.new(sum)
@@ -97,7 +97,7 @@ module FormulaFields
       if x.is_nothing?
         NumberType.new(1)
       else
-        product = x.get.reduce 1 do |a, e|
+        product = x.value.reduce 1 do |a, e|
           e.nil? ? a : a * e.to_f
         end
         NumberType.new(product)
@@ -112,10 +112,10 @@ module FormulaFields
       if x.is_nothing?
         NumberType.new(nil)
       else
-        sum = x.get.reduce 0 do |a, e|
+        sum = x.value.reduce 0 do |a, e|
           e.nil? ? a : a + e.to_f
         end
-        NumberType.new(sum / x.get.length)
+        NumberType.new(sum / x.value.length)
       end
     end
 
@@ -127,14 +127,14 @@ module FormulaFields
       if x.is_nothing?
         NumberType.new(nil)
       else
-        sum = x.get.reduce 0 do |a, e|
+        sum = x.value.reduce 0 do |a, e|
           e.nil? ? a : a + e.to_f
         end
-        mean = sum / x.get.length
-        variance_inner = x.get.reduce 0 do |a, e|
+        mean = sum / x.value.length
+        variance_inner = x.value.reduce 0 do |a, e|
           e.nil? ? a : a + (e.to_f - mean)**2
         end
-        variance = variance_inner / x.get.length
+        variance = variance_inner / x.value.length
         NumberType.new(variance)
       end
     end
@@ -147,14 +147,14 @@ module FormulaFields
       if x.is_nothing?
         NumberType.new(nil)
       else
-        sum = x.get.reduce 0 do |a, e|
+        sum = x.value.reduce 0 do |a, e|
           e.nil? ? a : a + e.to_f
         end
-        mean = sum / x.get.length
-        variance_inner = x.get.reduce 0 do |a, e|
+        mean = sum / x.value.length
+        variance_inner = x.value.reduce 0 do |a, e|
           e.nil? ? a : a + (e.to_f - mean)**2
         end
-        variance = variance_inner / x.get.length
+        variance = variance_inner / x.value.length
         NumberType.new(Math.sqrt(variance))
       end
     end
@@ -180,7 +180,7 @@ module FormulaFields
 
   def self.array_cmp(op, str_name)
     func = lambda do |_, x|
-      NumberType.new(x.get.send(op))
+      NumberType.new(x.value.send(op))
     end
     FunctionType.new(str_name, func, [Contract.new([:number])])
   end

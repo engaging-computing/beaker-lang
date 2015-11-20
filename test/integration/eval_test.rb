@@ -4,18 +4,18 @@ include FormulaFields
 
 class EvalTest < Minitest::Test
   pass_files = [
-    ['./test/files/eval_simple.txt', 'simple'],
-    ['./test/files/eval_math.txt', 'math'],
-    ['./test/files/eval_number.txt', 'number'],
-    ['./test/files/eval_array.txt', 'array'],
-    ['./test/files/eval_bool.txt', 'bool'],
-    ['./test/files/eval_text.txt', 'text'],
-    ['./test/files/eval_location.txt', 'location'],
-    ['./test/files/eval_time.txt', 'time']
+    ['./test/integration/files/eval_simple.txt', 'simple'],
+    ['./test/integration/files/eval_math.txt', 'math'],
+    ['./test/integration/files/eval_number.txt', 'number'],
+    ['./test/integration/files/eval_array.txt', 'array'],
+    ['./test/integration/files/eval_bool.txt', 'bool'],
+    ['./test/integration/files/eval_text.txt', 'text'],
+    ['./test/integration/files/eval_location.txt', 'location'],
+    ['./test/integration/files/eval_time.txt', 'time']
   ]
 
   fail_files = [
-    ['./test/files/eval_fail.txt', 'fail']
+    ['./test/integration/files/eval_fail.txt', 'fail']
   ]
 
   pass_files.each do |f|
@@ -54,22 +54,22 @@ class EvalTest < Minitest::Test
   end
 
   def setup
-    FormulaFields.stdlib.add_ns '*', NumberType.new(1)
+    FormulaFields.stdlib.add '*', NumberType.new(1)
 
     @env = Environment.new(true, FormulaFields.stdlib)
-    @env.add_ns 'Test',
-      'a' => ArrayType.new([1, 2, 3, 4, 5], :number),
-      'b' => ArrayType.new(['a', 'b', 'c'], :text),
-      'c' => ArrayType.new([30, 60, 90, 120, 150], :latitude),
-      'd' => ArrayType.new([45, 90, 135, 180, 225, 270], :longitude),
+    @env.add 'Test',
+      'a' => ArrayType.new([1, 2, 3, 4, 5], :number, 1),
+      'b' => ArrayType.new(['a', 'b', 'c'], :text, 1),
+      'c' => ArrayType.new([30, 60, 90, 120, 150], :latitude, 1),
+      'd' => ArrayType.new([45, 90, 135, 180, 225, 270], :longitude, 1),
       'e' => ArrayType.new([
         DateTime.new(2015, 1, 1, 1, 1, 1),
         DateTime.new(2016, 1, 1, 1, 1, 1),
         DateTime.new(2017, 1, 1, 1, 1, 1),
         DateTime.new(2018, 1, 1, 1, 1, 1),
         DateTime.new(2019, 1, 1, 1, 1, 1)
-      ], :timestamp),
-      'f' => ArrayType.new([1, 2, 3, 4, nil], :number),
+      ], :timestamp, 1),
+      'f' => ArrayType.new([1, 2, 3, 4, nil], :number, 1),
       'x1' => LongitudeType.new(75),
       'x2' => LongitudeType.new(0),
       'xn' => LongitudeType.new(nil),
