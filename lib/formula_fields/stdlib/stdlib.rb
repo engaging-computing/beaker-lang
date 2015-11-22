@@ -28,7 +28,7 @@ module FormulaFields
   #   I made the "get" function.
   def self.check_if_branches(l, r)
     if l.type != r.type
-      fail ArgumentTypeError.new('if', [:bool, l.type, r.type], [:bool, l.type, r.type])
+      fail ArgumentTypeError.new('if', [:bool, l.type, r.type], [:bool, l.type, l.type])
     end
   end
 end

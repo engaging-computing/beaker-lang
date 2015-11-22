@@ -1,4 +1,6 @@
-number(true) :: 1.0
-number(false) :: 0.0
-text(true) :: "true"
-text(false) :: "false"
+number(true) :: 1.0 :: number
+number(false) :: 0.0 :: number
+text(true) :: "true" :: text
+text(false) :: "false" :: text
+bool(true) :: true :: bool
+bool(false) :: false :: bool

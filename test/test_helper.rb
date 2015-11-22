@@ -28,6 +28,18 @@ def assert_same_evaluation(src, eval, res)
   end
 end
 
+def assert_same_type(src, eval, type)
+  if eval.type == :array
+    assert eval.contains.to_s == type, err_type_mismatch(eval.contains.to_s, type, src)
+  else
+    assert eval.type.to_s == type, err_type_mismatch(eval.type.to_s, type, src)
+  end
+end
+
+def assert_same_error(src, error, res)
+  assert error == res, err_wrong_error(error, res, src)
+end
+
 def err_token_string_length(is, should, src, lex, res)
   "Token string length mismatch: should be #{should}, is #{is}" \
   "\n  String: #{src}" \
@@ -54,6 +66,20 @@ def err_eval_mismatch(is, should, src)
   "\n  String: #{src}" \
   "\n  Evaluated: #{is}" \
   "\n  Should be: #{should}"
+end
+
+def err_type_mismatch(is, should, src)
+  'Type mismatch:' \
+  "\n  String: #{src}" \
+  "\n  Evaluated: #{is}" \
+  "\n  Should be: #{should}"
+end
+
+def err_wrong_error(is, should, src)
+  'Wrong error thrown:' \
+  "\n  String: #{src}" \
+  "\n  Error:     #{is.inspect}" \
+  "\n  Should be: #{should.inspect}"
 end
 
 def load_lex_test(file, is_valid = true)
@@ -89,8 +115,8 @@ def load_eval_test(file)
   File.open(file, 'r') do |f|
     f.each_line do |line|
       unless line.strip.empty? or line[0, 1] == '#'
-        l, r = line.split('::')
-        lines << [l.strip, r.strip]
+        a, b, c = line.split('::')
+        lines << [a.strip, b.strip, c.strip]
       end
     end
   end

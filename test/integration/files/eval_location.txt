@@ -1,19 +1,19 @@
-number(Test.x1) :: 75.0
-text(Test.x1) :: "75.0"
-degrees(Test.x1) :: 75.0
-radians(Test.x1) :: 1.3089969389957472
-number(Test.y2) :: 90.0
-text(Test.y2) :: "90.0"
-degrees(Test.y2) :: 90.0
-radians(Test.y2) :: 1.5707963267948966
-location(Test.x1, Test.y1) - location(Test.x2, Test.y2) :: 1.5707963267948966
-location(Test.xn, Test.y1) - location(Test.x2, Test.y2) ::
-location(Test.x1, Test.yn) - location(Test.x2, Test.y2) ::
-location(Test.x1, Test.y1) - location(Test.xn, Test.y2) ::
-location(Test.x1, Test.y1) - location(Test.x2, Test.yn) ::
-location(Test.xn, Test.yn) - location(Test.x2, Test.y2) ::
-location(Test.xn, Test.y1) - location(Test.xn, Test.y2) ::
-location(Test.xn, Test.y1) - location(Test.x2, Test.yn) ::
-location(Test.x1, Test.yn) - location(Test.xn, Test.y2) ::
-location(Test.x1, Test.yn) - location(Test.x2, Test.yn) ::
-location(Test.x1, Test.y1) - location(Test.xn, Test.yn) ::
+number(Test.x1) :: 75.0 :: number
+text(Test.x1) :: "75.0" :: text
+degrees(Test.x1) :: 75.0 :: number
+radians(Test.x1) :: 1.3089969389957472 :: number
+number(Test.y2) :: 90.0 :: number
+text(Test.y2) :: "90.0" :: text
+degrees(Test.y2) :: 90.0 :: number
+radians(Test.y2) :: 1.5707963267948966 :: number
+location(Test.x1, Test.y1) - location(Test.x2, Test.y2) :: 1.5707963267948966 :: number
+location(Test.xn, Test.y1) - location(Test.x2, Test.y2) :: :: number
+location(Test.x1, Test.yn) - location(Test.x2, Test.y2) :: :: number
+location(Test.x1, Test.y1) - location(Test.xn, Test.y2) :: :: number
+location(Test.x1, Test.y1) - location(Test.x2, Test.yn) :: :: number
+location(Test.xn, Test.yn) - location(Test.x2, Test.y2) :: :: number
+location(Test.xn, Test.y1) - location(Test.xn, Test.y2) :: :: number
+location(Test.xn, Test.y1) - location(Test.x2, Test.yn) :: :: number
+location(Test.x1, Test.yn) - location(Test.xn, Test.y2) :: :: number
+location(Test.x1, Test.yn) - location(Test.x2, Test.yn) :: :: number
+location(Test.x1, Test.y1) - location(Test.xn, Test.yn) :: :: number

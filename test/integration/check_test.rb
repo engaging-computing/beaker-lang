@@ -21,14 +21,14 @@ class CheckTest < Minitest::Test
   pass_files.each do |f|
     path = f[0]
     name = f[1]
-    load_parse_test(path).each.with_index do |x, i|
+    load_eval_test(path).each.with_index do |x, i|
       define_method("test_check_#{name}_#{i}") do
         curr_env = Environment.new(false, @env)
-        src, res = x
+        src, res, type = x
         lex = Lexer.lex(src)
         parse = Parser.parse(src, lex)
         a = parse.evaluate(curr_env)
-        # assert_same_parse(src, a, res)
+        assert_same_type(src, a, type)
       end
     end
   end
@@ -36,7 +36,7 @@ class CheckTest < Minitest::Test
   fail_files.each do |f|
     path = f[0]
     name = f[1]
-    load_parse_test(path).each.with_index do |x, i|
+    load_eval_test(path).each.with_index do |x, i|
       define_method("test_check_#{name}_#{i}") do
         curr_env = Environment.new(false, @env)
         src, res = x
@@ -48,7 +48,7 @@ class CheckTest < Minitest::Test
         rescue => e
           error = e.to_s
         end
-        # assert_same_parse(src, error, unescape(res))
+        assert_same_error(src, error, unescape(res))
       end
     end
   end

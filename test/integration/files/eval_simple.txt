@@ -1,82 +1,82 @@
-true || true :: true
-true || false :: true
-false || true :: true
-false || false :: false
-true && true :: true
-true && false :: false
-false && true :: false
-false && false :: false
-true == true :: true
-true == false :: false
-false == true :: false
-false == false :: true
-true != true :: false
-true != false :: true
-false != true :: true
-false != false :: false
-!true :: false
-!false :: true
-!false && false :: false
-if(true, 1, 2) :: 1.0
-if(false, 1, 2) :: 2.0
-if (true, 1, 2) :: 1.0
-if(1 > 2, false, true) == !(1 > 2) :: true
-1 == 1 :: true
-1 == 2 :: false
-1 != 1 :: false
-1 != 2 :: true
-0.1 + 0.2 == 0.3 :: true
-0.00001 + 0.00002 == 0.00003 :: true
-1000.1 + 1000.2 == 2000.3 :: true
-1 < 2 :: true
-1 < 1 :: false
-1 < 0 :: false
-1 <= 2 :: true
-1 <= 1 :: true
-1 <= 0 :: false
-1 > 2 :: false
-1 > 1 :: false
-1 > 0 :: true
-1 >= 2 :: false
-1 >= 1 :: true
-1 >= 0 :: true
-"cat" == "cat" :: true
-"cat" == "dog" :: false
-"cat" != "cat" :: false
-"cat" != "dog" :: true
-"banana" < "apple" :: false
-"banana" < "banana" :: false
-"banana" < "carrot" :: true
-"banana" <= "apple" :: false
-"banana" <= "banana" :: true
-"banana" <= "carrot" :: true
-"banana" > "apple" :: true
-"banana" > "banana" :: false
-"banana" > "carrot" :: false
-"banana" >= "apple" :: true
-"banana" >= "banana" :: true
-"banana" >= "carrot" :: false
-true || false && false || false :: false
-false || false && false || true :: false
-1 + 2 + 3 :: 6.0
-1 - 2 - 3 :: -4.0
-1 * 2 * 3 :: 6.0
-1 / 2 / 4 :: 0.125
-2 ^ 3 ^ 4 :: 2.4178516392292583e+24
-37 % 23 :: 14.0
-37 % -23 :: -9.0
--37 % 23 :: 9.0
--37 % -23 :: -14.0
-1 + 2 + 3 + 4 + 5 :: 15.0
--1 ^ 4 :: 1.0
-1 + "cat" :: "1.0cat"
-"cat" + 1 :: "cat1.0"
--2.3 * "cat" :: "ctactac"
-"cat" * -2.3 :: "ctactac"
-"dog" + "cat" * -2 :: "dogtactac"
-13231321 % 31 :: 25.0
-321 % 78 % 15 :: 9.0
-(1 + 2) / (5 + 7) :: 0.25
-1 / 0 ::
-+-+-+----+-3 :: -3.0
-+-+-+---+-3 :: 3.0
+true || true :: true :: bool
+true || false :: true :: bool
+false || true :: true :: bool
+false || false :: false :: bool
+true && true :: true :: bool
+true && false :: false :: bool
+false && true :: false :: bool
+false && false :: false :: bool
+true == true :: true :: bool
+true == false :: false :: bool
+false == true :: false :: bool
+false == false :: true :: bool
+true != true :: false :: bool
+true != false :: true :: bool
+false != true :: true :: bool
+false != false :: false :: bool
+!true :: false :: bool
+!false :: true :: bool
+!false && false :: false :: bool
+if(true, 1, 2) :: 1.0 :: number
+if(false, 1, 2) :: 2.0 :: number
+if (true, 1, 2) :: 1.0 :: number
+if(1 > 2, false, true) == !(1 > 2) :: true :: bool
+1 == 1 :: true :: bool
+1 == 2 :: false :: bool
+1 != 1 :: false :: bool
+1 != 2 :: true :: bool
+0.1 + 0.2 == 0.3 :: true :: bool
+0.00001 + 0.00002 == 0.00003 :: true :: bool
+1000.1 + 1000.2 == 2000.3 :: true :: bool
+1 < 2 :: true :: bool
+1 < 1 :: false :: bool
+1 < 0 :: false :: bool
+1 <= 2 :: true :: bool
+1 <= 1 :: true :: bool
+1 <= 0 :: false :: bool
+1 > 2 :: false :: bool
+1 > 1 :: false :: bool
+1 > 0 :: true :: bool
+1 >= 2 :: false :: bool
+1 >= 1 :: true :: bool
+1 >= 0 :: true :: bool
+"cat" == "cat" :: true :: bool
+"cat" == "dog" :: false :: bool
+"cat" != "cat" :: false :: bool
+"cat" != "dog" :: true :: bool
+"banana" < "apple" :: false :: bool
+"banana" < "banana" :: false :: bool
+"banana" < "carrot" :: true :: bool
+"banana" <= "apple" :: false :: bool
+"banana" <= "banana" :: true :: bool
+"banana" <= "carrot" :: true :: bool
+"banana" > "apple" :: true :: bool
+"banana" > "banana" :: false :: bool
+"banana" > "carrot" :: false :: bool
+"banana" >= "apple" :: true :: bool
+"banana" >= "banana" :: true :: bool
+"banana" >= "carrot" :: false :: bool
+true || false && false || false :: false :: bool
+false || false && false || true :: false :: bool
+1 + 2 + 3 :: 6.0 :: number
+1 - 2 - 3 :: -4.0 :: number
+1 * 2 * 3 :: 6.0 :: number
+1 / 2 / 4 :: 0.125 :: number
+2 ^ 3 ^ 4 :: 2.4178516392292583e+24 :: number
+37 % 23 :: 14.0 :: number
+37 % -23 :: -9.0 :: number
+-37 % 23 :: 9.0 :: number
+-37 % -23 :: -14.0 :: number
+1 + 2 + 3 + 4 + 5 :: 15.0 :: number
+-1 ^ 4 :: 1.0 :: number
+1 + "cat" :: "1.0cat" :: text
+"cat" + 1 :: "cat1.0" :: text
+-2.3 * "cat" :: "ctactac" :: text
+"cat" * -2.3 :: "ctactac" :: text
+"dog" + "cat" * -2 :: "dogtactac" :: text
+13231321 % 31 :: 25.0 :: number
+321 % 78 % 15 :: 9.0 :: number
+(1 + 2) / (5 + 7) :: 0.25 :: number
+1 / 0 :: :: number
++-+-+----+-3 :: -3.0 :: number
++-+-+---+-3 :: 3.0 :: number

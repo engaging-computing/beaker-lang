@@ -24,11 +24,12 @@ class EvalTest < Minitest::Test
     load_eval_test(path).each.with_index do |x, i|
       define_method("test_eval_#{name}_#{i}") do
         curr_env = Environment.new(false, @env)
-        src, res = x
+        src, res, type = x
         lex = Lexer.lex(src)
         parse = Parser.parse(src, lex)
         ev = parse.evaluate(curr_env)
         assert_same_evaluation(src, ev, res)
+        assert_same_type(src, ev, type)
       end
     end
   end
@@ -48,7 +49,7 @@ class EvalTest < Minitest::Test
         rescue => e
           error = e.to_s
         end
-        #assert_same_error(src, error, unescape(res))
+        assert_same_error(src, error, unescape(res))
       end
     end
   end
