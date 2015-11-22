@@ -36,13 +36,12 @@ module FormulaFields
     def access(index, default = nil)
       if index < 0 or index >= @value.length
         ArrayType.class_map[@contains].new(default)
+      elsif @value[index].nil? and default.nil?
+        FormulaFields.get_nothing_type(@contains)
+      elsif @value[index].nil?
+        ArrayType.class_map[@contains].new(default)
       else
-        tmp = ArrayType.class_map[@contains].new(@value[index])
-        if tmp.is_nothing?
-          ArrayType.class_map[@contains].new(default)
-        else
-          tmp
-        end
+        ArrayType.class_map[@contains].new(@value[index])
       end
     end
 

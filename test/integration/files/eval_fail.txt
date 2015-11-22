@@ -31,3 +31,4 @@ Math ^ 1 :: In ^: expected (number,number), given (namespace,number)
 !1 :: In !: expected (bool), given (number)
 Math.a :: Unknown identifier a
 if(True, 1, 'a') :: In if: expected (bool,any,any), given (bool,number,text)
+Test.a.reverse :: AAA

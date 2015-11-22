@@ -37,7 +37,7 @@ module FormulaFields
                     end
 
       if look_result.nil?
-        if !@parent.nil? and @scope.nil?
+        if !@parent.nil? and scope.nil?
           @parent.lookup(name)
         end
       elsif look_result.is_a? Hash

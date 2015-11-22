@@ -1,4 +1,4 @@
-true.to_number() :: 1.0
-false.to_number() :: 0.0
-true.to_text() :: "True"
-false.to_text() :: "False"
+number(true) :: 1.0
+number(false) :: 0.0
+text(true) :: "true"
+text(false) :: "false"

@@ -70,7 +70,7 @@ module FormulaFields
 
     production(:identexpr) do
       clause('IDENTIFIER') { |x| Name.new(x) }
-      #clause('OPENP NEWLINE* .assexpr NEWLINE* CLOSEP') { |x| x }
+      clause('OPENP NEWLINE* .andexpr NEWLINE* CLOSEP') { |x| x }
       clause('LITERAL') { |x| x.is_a?(Numeric) ? NumberLiteral.new(Float(x)) : StringLiteral.new(String(x)) }
     end
 

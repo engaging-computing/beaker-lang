@@ -5,16 +5,7 @@ class ParserTest < Minitest::Test
     define_method("test_parser_simple_#{i}") do
       src, res = x
       lex = FormulaFields::Lexer.lex(src)
-      parse = FormulaFields::Parser.parse(src, lex)[0].to_s
-      assert_same_parse(src, parse, res)
-    end
-  end
-
-  load_parse_multiline('./test/integration/files/parser_multiline.txt').each.with_index do |x, i|
-    define_method("test_parser_multiline_#{i}") do
-      src, res = x
-      lex = FormulaFields::Lexer.lex(src)
-      parse = FormulaFields::Parser.parse(src, lex).join(';')
+      parse = FormulaFields::Parser.parse(src, lex).to_s
       assert_same_parse(src, parse, res)
     end
   end

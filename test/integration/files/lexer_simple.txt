@@ -2,8 +2,6 @@
 \r :: EOS
 \f :: EOS
 \n :: NEWLINE EOS
-=  :: ASSIGN EOS
-=  :: ASSIGN EOS
 (  :: OPENP EOS
 )  :: CLOSEP EOS
 .  :: PERIOD EOS

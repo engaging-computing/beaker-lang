@@ -31,7 +31,19 @@ module FormulaFields
     # Takes a latitude and longitude type, and returns a location type.
     @stdlib.add 'location', FunctionType.new('location', lambda do |env, x, y|
       LocationType.new(x.get, y.get)
-    end, [Contract.new(:latitude), Contract.new(:longitude)])
+    end, [Contract.new(:longitude), Contract.new(:latitude)])
+
+    @stdlib.add 'degrees', FunctionType.new('degrees', lambda do |env, x|
+      NumberType.new(x.get)
+    end, [OrContract.new([Contract.new(:latitude), Contract.new(:longitude)])])
+
+    @stdlib.add 'radians', FunctionType.new('radians', lambda do |env, x|
+      if x.is_nothing?
+        NumberType.new(nil)
+      else
+        NumberType.new(x.get * Math::PI / 180)
+      end
+    end, [OrContract.new([Contract.new(:latitude), Contract.new(:longitude)])])
   end
 end
 

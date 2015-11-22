@@ -50,10 +50,32 @@ module FormulaFields
     end
 
     def self.elapsed(l, r)
+      self.elapsed2(l, r, nil)
+    end
+
+    def self.elapsed2(l, r, units)
       if l.is_nothing? or r.is_nothing?
         NumberType.new(nil)
       else
-        NumberType.new((l.get - r.get) * 24 * 60 * 60)
+        tc1 = l.get.strftime('%s').to_i
+        tc2 = r.get.strftime('%s').to_i
+        delta = (tc1 - tc2).abs
+
+        units = units.nil? ? TextType.new('seconds') : units
+        conv_factor = case units.get
+                      when 'second', 'seconds' then 0
+                      when 'minute', 'minutes' then 1
+                      when 'hour', 'hours' then 2
+                      when 'day', 'days' then 3
+                      when 'week', 'weeks' then 4
+                      when 'month', 'months' then 5
+                      when 'year', 'years' then 6
+                      else 0
+                      end
+
+        convs = [60.0, 60.0, 24.0, 7.0, 4.348125, 12.0][0, conv_factor]
+        conv_delta = convs.reduce(delta, :/)
+        NumberType.new(conv_delta)
       end
     end
   end

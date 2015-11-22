@@ -22,12 +22,12 @@ class CheckTest < Minitest::Test
     path = f[0]
     name = f[1]
     load_parse_test(path).each.with_index do |x, i|
-      define_method("test_eval_#{name}_#{i}") do
+      define_method("test_check_#{name}_#{i}") do
         curr_env = Environment.new(false, @env)
         src, res = x
         lex = Lexer.lex(src)
         parse = Parser.parse(src, lex)
-        a = parse.map { |y| y.evaluate(curr_env) }[-1].to_s
+        a = parse.evaluate(curr_env)
         # assert_same_parse(src, a, res)
       end
     end
@@ -37,14 +37,14 @@ class CheckTest < Minitest::Test
     path = f[0]
     name = f[1]
     load_parse_test(path).each.with_index do |x, i|
-      define_method("test_eval_#{name}_#{i}") do
+      define_method("test_check_#{name}_#{i}") do
         curr_env = Environment.new(false, @env)
         src, res = x
         begin
           lex = Lexer.lex(src)
           parse = Parser.parse(src, lex)
           error = ''
-          parse.map { |y| y.evaluate(curr_env) }[-1].to_s
+          parse.evaluate(curr_env)
         rescue => e
           error = e.to_s
         end

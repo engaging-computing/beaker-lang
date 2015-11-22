@@ -1,42 +1,5 @@
 module FormulaFields
   def self.init_array
-    @stdlib.add_class :array,
-      # Takes an array and returns a string describing the contents of the array.
-      'type' => MethodType.new('type', lambda do |env, this|
-        TextType.new(this.contains.to_s.capitalize)
-      end, [MethodContract.new]),
-
-      # Takes an array and returns the length of the array.
-      'length' => MethodType.new('length', lambda do |env, this|
-        NumberType.new(this.value.length)
-      end, [MethodContract.new]),
-
-      # Takes an array and an optional default value (in case the specified location
-      #   in the array is nil or out of bounds), and returns the value stored at
-      #   position n, where n is the current position of the array.
-      'get' => MethodType.new('get', lambda do |env, this, default|
-        if default.nil?
-          val = this.get
-          pack_by_type(val, this.contains)
-        else
-          check_default_value('get', this, default)
-          val = ArrayType.new(this.value, this.contains, this.curr_pos, default.get).get
-          pack_by_type(val, this.contains)
-        end
-      end, [MethodContract.new, AnyContract.new(true)]),
-
-      # Takes an array and returns a reversed version of it.  Does not modify the
-      #   original array.
-      'reverse' => MethodType.new('reverse', lambda do |env, this|
-        ArrayType.new(this.value.reverse, this.contains, this.curr_pos, this.default)
-      end, [MethodContract.new]),
-
-      # Takes an array and converts it into a textual representation, surrounded
-      #   by square brackets and delimited by commas.
-      'to_text' => MethodType.new('to_text', lambda do |env, this|
-        TextType.new(this.to_s)
-      end, [MethodContract.new])
-
     # Takes an array and an optional default value (in case the specified location
     #   in the array is nil or out of bounds), and returns an array object with
     #   the current position set to n + 1, where n is the current position of the
@@ -137,6 +100,10 @@ module FormulaFields
         ArrayType.new(array.value, array.contains, array.value.length - (1 + idx.get), default.get)
       end
     end, [AnyArrayContract.new, Contract.new(:number), AnyContract.new(true)])
+
+    @stdlib.add 'array_length', FunctionType.new('length', lambda do |env, array|
+      NumberType.new(array.value.length)
+    end, [AnyArrayContract.new])
   end
 
   private

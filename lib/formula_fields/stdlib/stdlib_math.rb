@@ -8,38 +8,37 @@ module FormulaFields
 
     # Definition of the math module.  Everything is created according to a function
     #   that produces a wrapper around a ruby function.
-    @stdlib.add 'math',
-      'sqrt' => math_unary(:sqrt),
-      'abs' => numeric_unary(:abs),
-      'ceil' => numeric_unary(:ceil),
-      'floor' => numeric_unary(:floor),
-      'round' => numeric_unary(:round),
-      'sin' => math_unary(:sin),
-      'cos' => math_unary(:cos),
-      'tan' => math_unary(:tan),
-      'sinh' => math_unary(:sinh),
-      'cosh' => math_unary(:cosh),
-      'tanh' => math_unary(:tanh),
-      'asin' => math_unary(:asin),
-      'acos' => math_unary(:acos),
-      'atan' => math_unary(:atan),
-      'asinh' => math_unary(:asinh),
-      'acosh' => math_unary(:acosh),
-      'atanh' => math_unary(:atanh),
-      'ln' => math_unary(:log, 'ln'),
-      'log2' => math_unary(:log2),
-      'log10' => math_unary(:log10),
-      'atan2' => math_binary(:atan2),
-      'log' => math_binary(:log),
-      'min' => binary_cmp(:min),
-      'max' => binary_cmp(:max),
-      'sum' => math_sum,
-      'prod' => math_prod,
-      'mean' => math_mean,
-      'variance' => math_variance,
-      'stddev' => math_stddev,
-      'array_min' => array_cmp(:min, 'array_min'),
-      'array_max' => array_cmp(:max, 'array_max')
+    @stdlib.add 'sqrt', math_unary(:sqrt)
+    @stdlib.add 'abs', numeric_unary(:abs)
+    @stdlib.add 'ceil', numeric_unary(:ceil)
+    @stdlib.add 'floor', numeric_unary(:floor)
+    @stdlib.add 'round', numeric_unary(:round)
+    @stdlib.add 'sin', math_unary(:sin)
+    @stdlib.add 'cos', math_unary(:cos)
+    @stdlib.add 'tan', math_unary(:tan)
+    @stdlib.add 'sinh', math_unary(:sinh)
+    @stdlib.add 'cosh', math_unary(:cosh)
+    @stdlib.add 'tanh', math_unary(:tanh)
+    @stdlib.add 'asin', math_unary(:asin)
+    @stdlib.add 'acos', math_unary(:acos)
+    @stdlib.add 'atan', math_unary(:atan)
+    @stdlib.add 'asinh', math_unary(:asinh)
+    @stdlib.add 'acosh', math_unary(:acosh)
+    @stdlib.add 'atanh', math_unary(:atanh)
+    @stdlib.add 'ln', math_unary(:log, 'ln')
+    @stdlib.add 'log2', math_unary(:log2)
+    @stdlib.add 'log10', math_unary(:log10)
+    @stdlib.add 'atan2', math_binary(:atan2)
+    @stdlib.add 'log', math_binary(:log)
+    @stdlib.add 'min', binary_cmp(:min)
+    @stdlib.add 'max', binary_cmp(:max)
+    @stdlib.add 'sum', math_sum
+    @stdlib.add 'prod', math_prod
+    @stdlib.add 'mean', math_mean
+    @stdlib.add 'variance', math_variance
+    @stdlib.add 'stddev', math_stddev
+    @stdlib.add 'array_min', array_cmp(:min, 'array_min')
+    @stdlib.add 'array_max', array_cmp(:max, 'array_max')
   end
 
   private

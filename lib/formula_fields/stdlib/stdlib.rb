@@ -15,7 +15,7 @@ module FormulaFields
     # Takes a boolean, and returns the second argument if true.  Otherwise, it
     #   returns the third argument.
     @stdlib.add 'if', FunctionType.new('if', lambda do |env, cond, x, y|
-      check_if_branches(l, r)
+      check_if_branches(x, y)
       cond.get ? x : y
     end, [Contract.new(:bool), AnyContract.new, AnyContract.new])
   end

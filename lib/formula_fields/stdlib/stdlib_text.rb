@@ -42,16 +42,21 @@ module FormulaFields
     #   just converted straight to text.  If no match is found, the empty string
     #   is returned.
     @stdlib.add 'text', FunctionType.new('text', lambda do |env, x|
-      type = x.type == :array ? x.contains : x.type
-      case type
-      when :bool then TextType.new(x.get ? 'true' : 'false')
-      when :number then TextType.new(x.get.to_s)
-      when :text then TextType.new(x.get)
-      when :timestamp then TextType.new(x.get.strftime('%Y/%m/%d %H:%M:%S'))
-      when :latitude then TextType.new(x.get.to_s)
-      when :longitude then TextType.new(x.get.to_s)
-      when :location then TextType.new("(#{x.get[0]}, #{x.get[1]})")
-      else TextType.new('')
+      if x.get.nil?
+        # so strftime doesn't implode
+        TextType.new('')
+      else
+        type = x.type == :array ? x.contains : x.type
+        case type
+        when :bool then TextType.new(x.get ? 'true' : 'false')
+        when :number then TextType.new(x.get.to_s)
+        when :text then TextType.new(x.get)
+        when :timestamp then TextType.new(x.get.strftime('%Y/%m/%d %H:%M:%S'))
+        when :latitude then TextType.new(x.get.to_s)
+        when :longitude then TextType.new(x.get.to_s)
+        when :location then TextType.new("(#{x.get[0]}, #{x.get[1]})")
+        else TextType.new('')
+        end
       end
     end, [OrContract.new([
       Contract.new(:bool),

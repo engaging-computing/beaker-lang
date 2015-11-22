@@ -19,6 +19,15 @@ def assert_same_parse(src, parse, res)
   assert parse == res, err_parse_mismatch(parse, res, src)
 end
 
+def assert_same_evaluation(src, eval, res)
+  if eval.type == :array
+    val = FormulaFields.pack_by_type(eval.get, eval.contains)
+    assert val.to_s == res, err_eval_mismatch(val.to_s, res, src)
+  else
+    assert eval.to_s == res, err_eval_mismatch(eval.to_s, res, src)
+  end
+end
+
 def err_token_string_length(is, should, src, lex, res)
   "Token string length mismatch: should be #{should}, is #{is}" \
   "\n  String: #{src}" \
@@ -37,6 +46,13 @@ def err_parse_mismatch(is, should, src)
   'Parse mismatch:' \
   "\n  String: #{src}" \
   "\n  Parsed: #{is}" \
+  "\n  Should be: #{should}"
+end
+
+def err_eval_mismatch(is, should, src)
+  'Evaluation mismatch:' \
+  "\n  String: #{src}" \
+  "\n  Evaluated: #{is}" \
   "\n  Should be: #{should}"
 end
 
@@ -68,28 +84,17 @@ def load_parse_test(file)
   lines
 end
 
-def load_parse_multiline(file)
-  exprs = []
-  start_expr = []
-  parse_tree = []
-  finished_tree = false
+def load_eval_test(file)
+  lines = []
   File.open(file, 'r') do |f|
     f.each_line do |line|
-      if line.strip == '::'
-        exprs << [start_expr.join.strip, parse_tree.join.strip]
-        start_expr = []
-        parse_tree = []
-        finished_tree = false
-      elsif line.strip == '>>'
-        finished_tree = true
-      elsif finished_tree
-        parse_tree << line
-      else
-        start_expr << line
+      unless line.strip.empty? or line[0, 1] == '#'
+        l, r = line.split('::')
+        lines << [l.strip, r.strip]
       end
     end
   end
-  exprs
+  lines
 end
 
 def unescape(s)
