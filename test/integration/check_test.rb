@@ -1,6 +1,6 @@
 require 'test_helper'
 
-include FormulaFields
+include Beaker
 
 class CheckTest < Minitest::Test
   pass_files = [
@@ -54,9 +54,9 @@ class CheckTest < Minitest::Test
   end
 
   def setup
-    FormulaFields.stdlib.add '*', NumberType.new(1)
+    Beaker.stdlib.add '*', NumberType.new(1)
 
-    @env = generate_dummy_env FormulaFields.stdlib, true, 'Test',
+    @env = generate_dummy_env Beaker.stdlib, true, 'Test',
       a: [:number],
       b: [:text],
       c: [:latitude],

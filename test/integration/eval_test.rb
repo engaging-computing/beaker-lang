@@ -1,6 +1,6 @@
 require 'test_helper'
 
-include FormulaFields
+include Beaker
 
 class EvalTest < Minitest::Test
   pass_files = [
@@ -55,9 +55,9 @@ class EvalTest < Minitest::Test
   end
 
   def setup
-    FormulaFields.stdlib.add '*', NumberType.new(1)
+    Beaker.stdlib.add '*', NumberType.new(1)
 
-    @env = Environment.new(true, FormulaFields.stdlib)
+    @env = Environment.new(true, Beaker.stdlib)
     @env.add 'Test',
       'a' => ArrayType.new([1, 2, 3, 4, 5], :number, 1),
       'b' => ArrayType.new(['a', 'b', 'c'], :text, 1),

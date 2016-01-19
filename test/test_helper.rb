@@ -3,7 +3,7 @@ SimpleCov.start
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
-require 'formula_fields'
+require 'beaker'
 require 'minitest/autorun'
 
 def assert_same_lex(src, lex, res)
@@ -21,7 +21,7 @@ end
 
 def assert_same_evaluation(src, eval, res)
   if eval.type == :array
-    val = FormulaFields.pack_by_type(eval.get, eval.contains)
+    val = Beaker.pack_by_type(eval.get, eval.contains)
     assert val.to_s == res, err_eval_mismatch(val.to_s, res, src)
   else
     assert eval.to_s == res, err_eval_mismatch(eval.to_s, res, src)
