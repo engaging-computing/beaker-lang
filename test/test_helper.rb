@@ -3,7 +3,7 @@ SimpleCov.start
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
-require 'formula_fields'
+require 'beaker'
 require 'minitest/autorun'
 
 def assert_same_lex(src, lex, res)
@@ -17,6 +17,27 @@ end
 
 def assert_same_parse(src, parse, res)
   assert parse == res, err_parse_mismatch(parse, res, src)
+end
+
+def assert_same_evaluation(src, eval, res)
+  if eval.type == :array
+    val = Beaker.pack_by_type(eval.get, eval.contains)
+    assert val.to_s == res, err_eval_mismatch(val.to_s, res, src)
+  else
+    assert eval.to_s == res, err_eval_mismatch(eval.to_s, res, src)
+  end
+end
+
+def assert_same_type(src, eval, type)
+  if eval.type == :array
+    assert eval.contains.to_s == type, err_type_mismatch(eval.contains.to_s, type, src)
+  else
+    assert eval.type.to_s == type, err_type_mismatch(eval.type.to_s, type, src)
+  end
+end
+
+def assert_same_error(src, error, res)
+  assert error == res, err_wrong_error(error, res, src)
 end
 
 def err_token_string_length(is, should, src, lex, res)
@@ -38,6 +59,27 @@ def err_parse_mismatch(is, should, src)
   "\n  String: #{src}" \
   "\n  Parsed: #{is}" \
   "\n  Should be: #{should}"
+end
+
+def err_eval_mismatch(is, should, src)
+  'Evaluation mismatch:' \
+  "\n  String: #{src}" \
+  "\n  Evaluated: #{is}" \
+  "\n  Should be: #{should}"
+end
+
+def err_type_mismatch(is, should, src)
+  'Type mismatch:' \
+  "\n  String: #{src}" \
+  "\n  Evaluated: #{is}" \
+  "\n  Should be: #{should}"
+end
+
+def err_wrong_error(is, should, src)
+  'Wrong error thrown:' \
+  "\n  String: #{src}" \
+  "\n  Error:     #{is.inspect}" \
+  "\n  Should be: #{should.inspect}"
 end
 
 def load_lex_test(file, is_valid = true)
@@ -68,28 +110,17 @@ def load_parse_test(file)
   lines
 end
 
-def load_parse_multiline(file)
-  exprs = []
-  start_expr = []
-  parse_tree = []
-  finished_tree = false
+def load_eval_test(file)
+  lines = []
   File.open(file, 'r') do |f|
     f.each_line do |line|
-      if line.strip == '::'
-        exprs << [start_expr.join.strip, parse_tree.join.strip]
-        start_expr = []
-        parse_tree = []
-        finished_tree = false
-      elsif line.strip == '>>'
-        finished_tree = true
-      elsif finished_tree
-        parse_tree << line
-      else
-        start_expr << line
+      unless line.strip.empty? or line[0, 1] == '#'
+        a, b, c = line.split('::')
+        lines << [a.strip, b.strip, c.strip]
       end
     end
   end
-  exprs
+  lines
 end
 
 def unescape(s)

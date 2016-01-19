@@ -1,0 +1,394 @@
+pi :: 3.141592653589793 :: number
+
+sqrt(1) :: 1.0 :: number
+
+1 + 0 :: 1.0 :: number
+0 + 1 :: 1.0 :: number
+1 + 1 :: 2.0 :: number
+1 + -1 :: 0.0 :: number
+-1 + 1 :: 0.0 :: number
+-1 + -1 :: -2.0 :: number
+30 + 10 :: 40.0 :: number
+30 + -10 :: 20.0 :: number
+-30 + 10 :: -20.0 :: number
+-30 + -10 :: -40.0 :: number
+
+1 - 0 :: 1.0 :: number
+0 - 1 :: -1.0 :: number
+1 - 1 :: 0.0 :: number
+1 - -1 :: 2.0 :: number
+-1 - 1 :: -2.0 :: number
+-1 - -1 :: 0.0 :: number
+30 - 10 :: 20.0 :: number
+30 - -10 :: 40.0 :: number
+-30 - 10 :: -40.0 :: number
+-30 - -10 :: -20.0 :: number
+
+1 * 0 :: 0.0 :: number
+0 * 1 :: 0.0 :: number
+1 * 1 :: 1.0 :: number
+1 * -1 :: -1.0 :: number
+-1 * 1 :: -1.0 :: number
+-1 * -1 :: 1.0 :: number
+30 * 10 :: 300.0 :: number
+30 * -10 :: -300.0 :: number
+-30 * 10 :: -300.0 :: number
+-30 * -10 :: 300.0 :: number
+
+1 / 0 :: :: number
+0 / 1 :: 0.0 :: number
+1 / 1 :: 1.0 :: number
+1 / -1 :: -1.0 :: number
+-1 / 1 :: -1.0 :: number
+-1 / -1 :: 1.0 :: number
+30 / 10 :: 3.0 :: number
+30 / -10 :: -3.0 :: number
+-30 / 10 :: -3.0 :: number
+-30 / -10 :: 3.0 :: number
+10 / 40 :: 0.25 :: number
+10 / -40 :: -0.25 :: number
+-10 / 40 :: -0.25 :: number
+-10 / -40 :: 0.25 :: number
+
+1^(1/2) :: 1.0 :: number
+4^(1/2) :: 2.0 :: number
+9^(1/2) :: 3.0 :: number
+2^(1/2) :: 1.4142135623730951 :: number
+-1^(1/2) :: :: number
+-4^(1/2) :: :: number
+-9^(1/2) :: :: number
+-2^(1/2) :: :: number
+
+5/0 :: :: number
+0/0 :: :: number
+-5/0 :: :: number
+
+sqrt(4) :: 2.0 :: number
+sqrt(9) :: 3.0 :: number
+sqrt(2) :: 1.4142135623730951 :: number
+sqrt(-1) :: :: number
+sqrt(-4) :: :: number
+sqrt(-9) :: :: number
+sqrt(-2) :: :: number
+sqrt(1/0) :: :: number
+
+abs(2) :: 2.0 :: number
+abs(2.5) :: 2.5 :: number
+abs(-2) :: 2.0 :: number
+abs(-2.5) :: 2.5 :: number
+abs(0) :: 0.0 :: number
+abs(1/0) :: :: number
+
+ceil(0) :: 0.0 :: number
+ceil(0.0) :: 0.0 :: number
+ceil(0.1) :: 1.0 :: number
+ceil(0.49) :: 1.0 :: number
+ceil(0.5) :: 1.0 :: number
+ceil(0.51) :: 1.0 :: number
+ceil(1) :: 1.0 :: number
+ceil(1.0) :: 1.0 :: number
+ceil(1/0) :: :: number
+
+floor(0) :: 0.0 :: number
+floor(0.0) :: 0.0 :: number
+floor(0.1) :: 0.0 :: number
+floor(0.49) :: 0.0 :: number
+floor(0.5) :: 0.0 :: number
+floor(0.51) :: 0.0 :: number
+floor(1) :: 1.0 :: number
+floor(1.0) :: 1.0 :: number
+floor(1/0) :: :: number
+
+round(0) :: 0.0 :: number
+round(0.0) :: 0.0 :: number
+round(0.1) :: 0.0 :: number
+round(0.49) :: 0.0 :: number
+round(0.5) :: 1.0 :: number
+round(0.51) :: 1.0 :: number
+round(1) :: 1.0 :: number
+round(1.0) :: 1.0 :: number
+round(1/0) :: :: number
+round(4.5) :: 5.0 :: number
+round(5.5) :: 6.0 :: number
+round(1/0) :: :: number
+
+sin(-4 * pi / 2) :: 2.4492935982947064e-16 :: number
+sin(-3 * pi / 2) :: 1.0 :: number
+sin(-2 * pi / 2) :: -1.2246467991473532e-16 :: number
+sin(-1 * pi / 2) :: -1.0 :: number
+sin(0 * pi / 2) :: 0.0 :: number
+sin(1 * pi / 2) :: 1.0 :: number
+sin(2 * pi / 2) :: 1.2246467991473532e-16 :: number
+sin(3 * pi / 2) :: -1.0 :: number
+sin(4 * pi / 2) :: -2.4492935982947064e-16 :: number
+sin(1/0) :: :: number
+
+cos(-4 * pi / 2) :: 1.0 :: number
+cos(-3 * pi / 2) :: -1.8369701987210297e-16 :: number
+cos(-2 * pi / 2) :: -1.0 :: number
+cos(-1 * pi / 2) :: 6.123233995736766e-17 :: number
+cos(0 * pi / 2) :: 1.0 :: number
+cos(1 * pi / 2) :: 6.123233995736766e-17 :: number
+cos(2 * pi / 2) :: -1.0 :: number
+cos(3 * pi / 2) :: -1.8369701987210297e-16 :: number
+cos(4 * pi / 2) :: 1.0 :: number
+cos(1/0) :: :: number
+
+tan(-4 * pi / 2) :: 2.4492935982947064e-16 :: number
+tan(-3 * pi / 2) :: -5.443746451065123e+15 :: number
+tan(-2 * pi / 2) :: 1.2246467991473532e-16 :: number
+tan(-1 * pi / 2) :: -1.633123935319537e+16 :: number
+tan(0 * pi / 2) :: 0.0 :: number
+tan(1 * pi / 2) :: 1.633123935319537e+16 :: number
+tan(2 * pi / 2) :: -1.2246467991473532e-16 :: number
+tan(3 * pi / 2) :: 5.443746451065123e+15 :: number
+tan(4 * pi / 2) :: -2.4492935982947064e-16 :: number
+tan(1/0) :: :: number
+
+sinh(-1000.0) :: :: number
+sinh(-2.0) :: -3.626860407847019 :: number
+sinh(-1.5) :: -2.1292794550948173 :: number
+sinh(-1.0) :: -1.1752011936438014 :: number
+sinh(-0.5) :: -0.5210953054937474 :: number
+sinh(0.0) :: 0.0 :: number
+sinh(0.5) :: 0.5210953054937474 :: number
+sinh(1.0) :: 1.1752011936438014 :: number
+sinh(1.5) :: 2.1292794550948173 :: number
+sinh(2.0) :: 3.626860407847019 :: number
+sinh(1000.0) :: :: number
+sinh(1/0) :: :: number
+
+cosh(-1000.0) :: :: number
+cosh(-2.0) :: 3.7621956910836314 :: number
+cosh(-1.5) :: 2.352409615243247 :: number
+cosh(-1.0) :: 1.5430806348152437 :: number
+cosh(-0.5) :: 1.1276259652063807 :: number
+cosh(0.0) :: 1.0 :: number
+cosh(0.5) :: 1.1276259652063807 :: number
+cosh(1.0) :: 1.5430806348152437 :: number
+cosh(1.5) :: 2.352409615243247 :: number
+cosh(2.0) :: 3.7621956910836314 :: number
+cosh(1000.0) :: :: number
+cosh(1/0) :: :: number
+
+tanh(-1000.0) :: -1.0 :: number
+tanh(-2.0) :: -0.9640275800758169 :: number
+tanh(-1.5) :: -0.9051482536448664 :: number
+tanh(-1.0) :: -0.7615941559557649 :: number
+tanh(-0.5) :: -0.46211715726000974 :: number
+tanh(0.0) :: 0.0 :: number
+tanh(0.5) :: 0.46211715726000974 :: number
+tanh(1.0) :: 0.7615941559557649 :: number
+tanh(1.5) :: 0.9051482536448664 :: number
+tanh(2.0) :: 0.9640275800758169 :: number
+tanh(1000.0) :: 1.0 :: number
+tanh(1/0) :: :: number
+
+asin(-2.0) :: :: number
+asin(-1.5) :: :: number
+asin(-1.0) :: -1.5707963267948966 :: number
+asin(-0.5) :: -0.5235987755982989 :: number
+asin(0.0) :: 0.0 :: number
+asin(0.5) :: 0.5235987755982989 :: number
+asin(1.0) :: 1.5707963267948966 :: number
+asin(1.5) :: :: number
+asin(2.0) :: :: number
+asin(1/0) :: :: number
+
+acos(-2.0) :: :: number
+acos(-1.5) :: :: number
+acos(-1.0) :: 3.141592653589793 :: number
+acos(-0.5) :: 2.0943951023931957 :: number
+acos(0.0) :: 1.5707963267948966 :: number
+acos(0.5) :: 1.0471975511965979 :: number
+acos(1.0) :: 0.0 :: number
+acos(1.5) :: :: number
+acos(2.0) :: :: number
+acos(1/0) :: :: number
+
+atan(-2.0) :: -1.1071487177940904 :: number
+atan(-1.5) :: -0.982793723247329 :: number
+atan(-1.0) :: -0.7853981633974483 :: number
+atan(-0.5) :: -0.4636476090008061 :: number
+atan(0.0) :: 0.0 :: number
+atan(0.5) :: 0.4636476090008061 :: number
+atan(1.0) :: 0.7853981633974483 :: number
+atan(1.5) :: 0.982793723247329 :: number
+atan(2.0) :: 1.1071487177940904 :: number
+atan(1/0) :: :: number
+
+asinh(-1000.0) :: -7.600902709541988 :: number
+asinh(-100.0) :: -5.298342365610589 :: number
+asinh(-10.0) :: -2.99822295029797 :: number
+asinh(-1.0) :: -0.881373587019543 :: number
+asinh(-0.1) :: -0.09983407889920758 :: number
+asinh(0.0) :: 0.0 :: number
+asinh(0.1) :: 0.09983407889920758 :: number
+asinh(1.0) :: 0.881373587019543 :: number
+asinh(10.0) :: 2.99822295029797 :: number
+asinh(100.0) :: 5.298342365610589 :: number
+asinh(1000.0) :: 7.600902709541988 :: number
+asinh(1/0) :: :: number
+
+acosh(-1000.0) :: :: number
+acosh(-100.0) :: :: number
+acosh(-10.0) :: :: number
+acosh(-1.0) :: :: number
+acosh(-0.1) :: :: number
+acosh(0.0) :: :: number
+acosh(0.1) :: :: number
+acosh(1.0) :: 0.0 :: number
+acosh(10.0) :: 2.993222846126381 :: number
+acosh(100.0) :: 5.298292365610484 :: number
+acosh(1000.0) :: 7.600902209541989 :: number
+acosh(1/0) :: :: number
+
+atanh(-1000.0) :: :: number
+atanh(-100.0) :: :: number
+atanh(-10.0) :: :: number
+atanh(-1.0) :: :: number
+atanh(-0.1) :: -0.10033534773107558 :: number
+atanh(0.0) :: 0.0 :: number
+atanh(0.1) :: 0.10033534773107558 :: number
+atanh(1.0) :: :: number
+atanh(10.0) :: :: number
+atanh(100.0) :: :: number
+atanh(1000.0) :: :: number
+atanh(1/0) :: :: number
+
+ln(-1.0) :: :: number
+ln(-0.5) :: :: number
+ln(0.0) :: :: number
+ln(0.5) :: -0.6931471805599453 :: number
+ln(1.0) :: 0.0 :: number
+ln(2.0) :: 0.6931471805599453 :: number
+ln(4.0) :: 1.3862943611198906 :: number
+ln(8.0) :: 2.0794415416798357 :: number
+ln(1/0) :: :: number
+
+log2(-1.0) :: :: number
+log2(-0.5) :: :: number
+log2(0.0) :: :: number
+log2(0.5) :: -1.0 :: number
+log2(1.0) :: 0.0 :: number
+log2(2.0) :: 1.0 :: number
+log2(4.0) :: 2.0 :: number
+log2(8.0) :: 3.0 :: number
+log2(1/0) :: :: number
+
+log10(-1.0) :: :: number
+log10(-0.5) :: :: number
+log10(0.0) :: :: number
+log10(0.5) :: -0.3010299956639812 :: number
+log10(1.0) :: 0.0 :: number
+log10(2.0) :: 0.3010299956639812 :: number
+log10(4.0) :: 0.6020599913279624 :: number
+log10(8.0) :: 0.9030899869919435 :: number
+log10(10.0) :: 1.0 :: number
+log10(50.0) :: 1.6989700043360187 :: number
+log10(100.0) :: 2.0 :: number
+log10(1/0) :: :: number
+
+atan2(-0.0, -1.0) :: -3.141592653589793 :: number
+atan2(-1.0, -1.0) :: -2.356194490192345 :: number
+atan2(-1.0, 0.0) :: -1.5707963267948966 :: number
+atan2(-1.0, 1.0) :: -0.7853981633974483 :: number
+atan2(-0.0, 1.0) :: -0.0 :: number
+atan2(0.0, 1.0) :: 0.0 :: number
+atan2(1.0, 1.0) :: 0.7853981633974483 :: number
+atan2(1.0, 0.0) :: 1.5707963267948966 :: number
+atan2(1.0, -1.0) :: 2.356194490192345 :: number
+atan2(0.0, -1.0) :: 3.141592653589793 :: number
+atan2(1/0, 1) :: :: number
+atan2(1, 1/0) :: :: number
+atan2(1/0, 1/0) :: :: number
+
+log(8, 2) :: 3.0 :: number
+log(0.5, 2) :: -1.0 :: number
+log(81, 3) :: 4.0 :: number
+
+min(-1, 1) :: -1.0 :: number
+min(1, -1) :: -1.0 :: number
+min(1, 1) :: 1.0 :: number
+min(1, 2) :: 1.0 :: number
+min(1/0, 1) :: 1.0 :: number
+min(1/0, -1) :: -1.0 :: number
+min(1, 1/0) :: 1.0 :: number
+min(-1, 1/0) :: -1.0 :: number
+min(1/0, 1/0) :: :: number
+
+max(-1, 1) :: 1.0 :: number
+max(1, -1) :: 1.0 :: number
+max(1, 1) :: 1.0 :: number
+max(1, 2) :: 2.0 :: number
+max(1/0, 1) :: 1.0 :: number
+max(1/0, -1) :: -1.0 :: number
+max(1, 1/0) :: 1.0 :: number
+max(-1, 1/0) :: -1.0 :: number
+max(1/0, 1/0) :: :: number
+
+#sum(Array.count(5, 3)) :: 18.0 :: number
+#sum(Array.count(-5, 3)) :: -12.0 :: number
+#sum(Array.repeat(6, 3)) :: 18.0 :: number
+#sum(Array.repeat(-6, 3)) :: -18.0 :: number
+#sum(Array.repeat(1/0, 5)) :: 0.0 :: number
+#sum(Array.repeat(1, 0)) :: 0.0 :: number
+
+#prod(Array.count(5, 3)) :: 210.0 :: number
+#prod(Array.count(-5, 3)) :: -60.0 :: number
+#prod(Array.repeat(6, 3)) :: 216.0 :: number
+#prod(Array.repeat(-6, 3)) :: -216.0 :: number
+#prod(Array.repeat(1/0, 5)) :: 1.0 :: number
+#prod(Array.repeat(1, 0)) :: 1.0 :: number
+
+#mean(Array.count(5, 3)) :: 6.0 :: number
+#mean(Array.count(-5, 3)) :: -4.0 :: number
+#mean(Array.repeat(6, 3)) :: 6.0 :: number
+#mean(Array.repeat(-6, 3)) :: -6.0 :: number
+#mean(Array.repeat(1/0, 5)) :: 0.0 :: number
+#mean(Array.repeat(1, 0)) :: :: number
+
+#variance(Array.repeat(-1, 5)) :: 0.0 :: number
+#variance(Array.repeat(0, 5)) :: 0.0 :: number
+#variance(Array.repeat(1, 5)) :: 0.0 :: number
+#variance(Array.repeat(1/0, 5)) :: 0.0 :: number
+#variance(Array.count(1, 3)) :: 0.6666666666666666 :: number
+#variance(Array.count(-1, -3)) :: 0.6666666666666666 :: number
+#variance(Array.repeat(1, 0)) :: :: number
+
+#stddev(Array.repeat(-1, 5)) :: 0.0 :: number
+#stddev(Array.repeat(0, 5)) :: 0.0 :: number
+#stddev(Array.repeat(1, 5)) :: 0.0 :: number
+#stddev(Array.repeat(1/0, 5)) :: 0.0 :: number
+#stddev(Array.count(1, 3)) :: 0.816496580927726 :: number
+#stddev(Array.count(-1, -3)) :: 0.816496580927726 :: number
+#stddev(Array.repeat(1, 0)) :: :: number
+
+array_min(Test.a) :: 1.0 :: number
+#array_min(Array.repeat(3, 5)) :: 3.0 :: number
+#array_min(Array.repeat(0, 5)) :: 0.0 :: number
+#array_min(Array.repeat(-3, 5)) :: -3.0 :: number
+#array_min(Array.count(1, 3)) :: 1.0 :: number
+#array_min(Array.count(-1, 3)) :: -1.0 :: number
+#array_min(Array.count(1, -3)) :: -1.0 :: number
+#array_min(Array.count(-1, -3)) :: -3.0 :: number
+
+array_max(Test.a) :: 5.0 :: number
+#array_max(Array.repeat(3, 5)) :: 3.0 :: number
+#array_max(Array.repeat(0, 5)) :: 0.0 :: number
+#array_max(Array.repeat(-3, 5)) :: -3.0 :: number
+#array_max(Array.count(1, 3)) :: 3.0 :: number
+#array_max(Array.count(-1, 3)) :: 1.0 :: number
+#array_max(Array.count(1, -3)) :: 1.0 :: number
+#array_max(Array.count(-1, -3)) :: -1.0 :: number
+
+atan2(0, -1) :: 3.141592653589793 :: number
+atan2(-1, -1) :: -2.356194490192345 :: number
+log10(1000) :: 3.0 :: number
+log(16, 4) :: 2.0 :: number
+mean(Test.a) :: 3.0 :: number
+min(1, 4) :: 1.0 :: number
+max(1, 4) :: 4.0 :: number
+array_min(Test.a) :: 1.0 :: number
+array_max(Test.a) :: 5.0 :: number
+9999^9999 :: :: number

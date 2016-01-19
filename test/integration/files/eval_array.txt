@@ -1,0 +1,44 @@
+array_length(Test.a) :: 5.0 :: number
+array_length(Test.b) :: 3.0 :: number
+array_length(Test.c) :: 5.0 :: number
+array_length(Test.d) :: 6.0 :: number
+array_length(Test.e) :: 5.0 :: number
+array_length(Test.f) :: 5.0 :: number
+
+prev(Test.a) :: 1.0 :: number
+prev_p(Test.a, 0) :: 2.0 :: number
+prev_p(Test.a, -1) :: 3.0 :: number
+prev_p(Test.a, 1) :: 1.0 :: number
+prev_p(Test.a, 2) :: :: number
+prev_p(Test.a, 20, 22) :: 22.0 :: number
+
+next(Test.a) :: 3.0 :: number
+next_p(Test.a, 0) :: 2.0 :: number
+next_p(Test.a, 1) :: 3.0 :: number
+next_p(Test.a, -1) :: 1.0 :: number
+next_p(Test.a, 20, 23) :: 23.0 :: number
+
+first(Test.a) :: 1.0 :: number
+first_p(Test.a, 0) :: 1.0 :: number
+first_p(Test.a, 1) :: 2.0 :: number
+first_p(Test.a, -1) :: :: number
+first_p(Test.a, -1, 24) :: 24.0 :: number
+first_p(Test.f, 4) :: :: number
+
+first(Test.a) :: 1.0 :: number
+first_p(Test.a, 0) :: 1.0 :: number
+first_p(Test.a, 1) :: 2.0 :: number
+first_p(Test.a, -1) :: :: number
+first_p(Test.a, -1, 25) :: 25.0 :: number
+
+last(Test.a) :: 5.0 :: number
+last_p(Test.a, 0) :: 5.0 :: number
+last_p(Test.a, 1) :: 4.0 :: number
+last_p(Test.a, -1) :: :: number
+last_p(Test.a, -1, 26) :: 26.0 :: number
+
+text(Test.a) :: "2.0" :: text
+text(Test.b) :: "b" :: text
+text(Test.c) :: "60.0" :: text
+text(Test.d) :: "90.0" :: text
+text(Test.e) :: "2016/01/01 01:01:01" :: text

@@ -1,0 +1,33 @@
+aaaaa :: Unknown identifier aaaaa :: error
+Test.t1(1) :: Test:t1 (timestamp) is not a function :: error
+100 */ 100 :: Unexpected token MULOP at 1:6\n  100 */ 100\n  ~~~~~^  :: error
+100 * :: Unexpected token EOS at 1:6\n  100 *\n  ~~~~~^ :: error
+bool + 'c' :: In +: expected (number,number), given (function,text) :: error
+bool + 111 :: In +: expected (number,number), given (function,number) :: error
+'c' + bool :: In +: expected (number,number), given (text,function) :: error
+111 + bool :: In +: expected (number,number), given (number,function) :: error
+'c' - 1 :: In -: expected (number,number), given (text,number) :: error
+bool - 1 :: In -: expected (number,number), given (function,number) :: error
+bool * 'c' :: In *: expected (number,number), given (function,text) :: error
+bool * 111 :: In *: expected (number,number), given (function,number) :: error
+'c' * bool :: In *: expected (number,number), given (text,function) :: error
+111 * bool :: In *: expected (number,number), given (number,function) :: error
+bool / 1 :: In /: expected (number,number), given (function,number) :: error
+'c' / 1 :: In /: expected (number,number), given (text,number) :: error
+bool % 1 :: In %: expected (number,number), given (function,number) :: error
+'c' % 1 :: In %: expected (number,number), given (text,number) :: error
+bool ^ 1 :: In ^: expected (number,number), given (function,number) :: error
+'c' ^ 1 :: In ^: expected (number,number), given (text,number) :: error
+1 && 2 :: In &&: expected (bool,bool), given (number,number) :: error
+1 || 2 :: In ||: expected (bool,bool), given (number,number) :: error
+1 == 'a' :: In ==: expected (eq,eq), given (number,text) :: error
+1 != 'a' :: In !=: expected (eq,eq), given (number,text) :: error
+1 < 'a' :: In <: expected (ord,ord), given (number,text) :: error
+1 > 'a' :: In >: expected (ord,ord), given (number,text) :: error
+1 <= 'a' :: In <=: expected (ord,ord), given (number,text) :: error
+1 >= 'a' :: In >=: expected (ord,ord), given (number,text) :: error
+!1 :: In !: expected (bool), given (number) :: error
+bool.a :: Unknown identifier a :: error
+if(true, 1, 'a') :: In if: expected (bool,number,text), given (bool,number,number) :: error
+if(true, 'a', 1) :: In if: expected (bool,text,number), given (bool,text,text) :: error
+Test.a.reverse :: Unknown identifier reverse :: error
