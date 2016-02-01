@@ -22,7 +22,7 @@ module Beaker
     end
 
     def is_nothing?
-      @value.length == 0
+      access(@curr_pos, @default).is_nothing?
     end
 
     def type
