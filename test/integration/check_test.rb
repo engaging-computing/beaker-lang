@@ -24,7 +24,7 @@ class CheckTest < Minitest::Test
     load_eval_test(path).each.with_index do |x, i|
       define_method("test_check_#{name}_#{i}") do
         curr_env = Environment.new(false, @env)
-        src, res, type = x
+        src, _, type = x
         lex = Lexer.lex(src)
         parse = Parser.parse(src, lex)
         a = parse.evaluate(curr_env)

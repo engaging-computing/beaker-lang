@@ -50,7 +50,7 @@ module Beaker
     end
 
     def self.elapsed(l, r)
-      self.elapsed2(l, r, nil)
+      elapsed2(l, r, nil)
     end
 
     def self.elapsed2(l, r, units)

@@ -29,7 +29,7 @@ module Beaker
 
   def check(expr, env, end_type)
     ret = expr.map { |y| y.evaluate(env) }[-1]
-    if ret.type != end_type
+    if ret.type != end_type and ret.type != :nothing
       puts expr
       'oops'
     end

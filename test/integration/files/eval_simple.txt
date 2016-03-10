@@ -1,3 +1,4 @@
+:: :: bool
 true || true :: true :: bool
 true || false :: true :: bool
 false || true :: true :: bool

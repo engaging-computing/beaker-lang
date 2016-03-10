@@ -24,7 +24,6 @@ module Beaker
       l_type = Beaker.inner_type(l)
       r_type = Beaker.inner_type(r)
 
-      compat = [[:text, :number], [:number, :text], [:text, :text]]
       case [l_type, r_type]
       when [:number, :number] then NumberType.arithmetic(:add, l, r)
       when [:number, :text] then TextType.concatenate(l, r)
@@ -383,6 +382,17 @@ module Beaker
 
     def to_s
       "\"#{@value[1, @value.length - 2]}\""
+    end
+  end
+
+  # special case literal for when the expression is isomorphic to the empty string
+  class NothingLiteral < Expression
+    def evaluate(_)
+      Beaker::NothingType.new
+    end
+
+    def to_s
+      ''
     end
   end
 end

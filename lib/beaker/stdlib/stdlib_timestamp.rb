@@ -10,8 +10,8 @@ module Beaker
     @stdlib.add 'timestamp', FunctionType.new('timestamp', lambda do |env, x|
       type = x.type == :array ? x.contains : x.type
       case type
-      when :number then TimestampType.new()
-      when :text then TimestampType.new()
+      when :number then TimestampType.new
+      when :text then TimestampType.new
       when :timestamp then TimestampType.new(x.get)
       else TimestampType.new(nil)
       end
