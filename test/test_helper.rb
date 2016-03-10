@@ -29,7 +29,9 @@ def assert_same_evaluation(src, eval, res)
 end
 
 def assert_same_type(src, eval, type)
-  if eval.type == :array
+  if eval.type == :nothing
+    # do nothing, this is ok
+  elsif eval.type == :array
     assert eval.contains.to_s == type, err_type_mismatch(eval.contains.to_s, type, src)
   else
     assert eval.type.to_s == type, err_type_mismatch(eval.type.to_s, type, src)

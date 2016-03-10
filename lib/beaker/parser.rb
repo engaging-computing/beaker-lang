@@ -3,7 +3,13 @@ require 'rltk/parser'
 module Beaker
   class Parser < RLTK::Parser
     def self.parse(line, tokens, opts = {})
-      super(tokens, opts)
+      if tokens[0].type == :EOS
+        # if the string is empty, don't do anything
+        NothingLiteral.new
+      else
+        # otherwise, parse using the rules below
+        super(tokens, opts)
+      end
     rescue RLTK::NotInLanguage => e
       raise ParseError.new(e, line)
     end
