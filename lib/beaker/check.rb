@@ -1,5 +1,5 @@
 module Beaker
-  def generate_dummy_env(parent, read_only, ns, reqs)
+  def self.generate_dummy_env(parent, read_only, ns, reqs)
     env = Environment.new(read_only, parent)
 
     allowed_types = [:number, :text, :latitude, :longitude, :timestamp]
@@ -27,13 +27,13 @@ module Beaker
     env
   end
 
-  def check(expr, env, end_type)
-    ret = expr.map { |y| y.evaluate(env) }[-1]
-    if ret.type != end_type and ret.type != :nothing
-      puts expr
-      'oops'
-    end
-  rescue => e
-    e.to_s
-  end
+  # def check(expr, env, end_type)
+  #   ret = expr.map { |y| y.evaluate(env) }[-1]
+  #   if ret.type != end_type and ret.type != :nothing
+  #     puts expr
+  #     'oops'
+  #   end
+  # rescue => e
+  #   e.to_s
+  # end
 end

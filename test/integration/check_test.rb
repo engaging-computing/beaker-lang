@@ -56,7 +56,7 @@ class CheckTest < Minitest::Test
   def setup
     Beaker.stdlib.add '*', NumberType.new(1)
 
-    @env = generate_dummy_env Beaker.stdlib, true, 'Test',
+    @env = Beaker.generate_dummy_env Beaker.stdlib, true, 'Test',
       a: [:number],
       b: [:text],
       c: [:latitude],
