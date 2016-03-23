@@ -21,7 +21,7 @@ module Beaker
       if default.nil?
         ArrayType.new(array.value, array.contains, array.curr_pos + idx.get, array.default)
       else
-        check_default_value('nextidx', array, default)
+        check_default_value('next_p', array, default)
         ArrayType.new(array.value, array.contains, array.curr_pos + idx.get, default.get)
       end
     end, [AnyArrayContract.new, Contract.new(:number), AnyContract.new(true)])
