@@ -25,6 +25,7 @@ offset(Test.t1, 5, "days") :: 2015/08/29 09:31:00 :: timestamp
 offset(Test.t1, 5, "weeks") :: 2015/09/28 09:31:00 :: timestamp
 offset(Test.t1, 5, "months") :: 2016/01/24 09:31:00 :: timestamp
 offset(Test.t1, 5, "years") :: 2020/08/24 09:31:00 :: timestamp
+offset(Test.t1, 5, "fleem") :: 2015/08/24 09:31:00 :: timestamp
 Test.t1 < Test.t2 :: true :: bool
 Test.t1 < Test.t1 :: false :: bool
 Test.t2 < Test.t1 :: false :: bool
