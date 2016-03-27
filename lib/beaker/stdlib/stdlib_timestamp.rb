@@ -97,7 +97,7 @@ module Beaker
         when 'week', 'weeks' then TimestampType.new(time.get + (dist_val * 7))
         when 'month', 'months' then TimestampType.new(time.get >> dist_val)
         when 'year', 'years' then TimestampType.new(time.get >> (dist_val * 12))
-        else this
+        else time
         end
       end
     end, [Contract.new(:timestamp), Contract.new(:number), Contract.new(:text, true)])
