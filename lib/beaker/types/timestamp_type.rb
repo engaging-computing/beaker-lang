@@ -78,5 +78,13 @@ module Beaker
         NumberType.new(conv_delta)
       end
     end
+
+    def self.offset(l, r)
+      if l.is_nothing? or r.is_nothing?
+        TimestampType.new(nil)
+      else
+        TimestampType.new(l.get + (r.get / 86400))
+      end
+    end
   end
 end
