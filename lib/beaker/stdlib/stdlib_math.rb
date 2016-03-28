@@ -117,7 +117,12 @@ module Beaker
   def self.array_cmp(func_name, str_name = nil)
     name = str_name.nil? ? func_name.to_s : str_name
     FunctionType.new(name, lambda do |_, x|
-      NumberType.new(x.value.send(func_name))
+      vals = x.value.select { |x| !x.nil? }
+      if vals.empty?
+        NumberType.new(nil)
+      else
+        NumberType.new(vals.send(func_name))
+      end
     end, [Contract.new([:number])])
   end
 
@@ -152,7 +157,7 @@ module Beaker
   def self.math_mean
     FunctionType.new('mean', lambda do |_, x|
       if x.is_nothing?
-        NumberType.new(nil)
+        NumberType.new(0)
       else
         sum = x.value.reduce(0) { |a, e| e.nil? ? a : a + e.to_f }
         NumberType.new(sum / x.value.length)
@@ -163,7 +168,7 @@ module Beaker
   def self.math_variance
     FunctionType.new('variance', lambda do |_, x|
       if x.is_nothing?
-        NumberType.new(nil)
+        NumberType.new(0)
       else
         sum = x.value.reduce(0) { |a, e| e.nil? ? a : a + e.to_f }
         mean = sum / x.value.length
@@ -176,7 +181,7 @@ module Beaker
   def self.math_stddev
     FunctionType.new('stddev', lambda do |_, x|
       if x.is_nothing?
-        NumberType.new(nil)
+        NumberType.new(0)
       else
         sum = x.value.reduce(0) { |a, e| e.nil? ? a : a + e.to_f }
         mean = sum / x.value.length

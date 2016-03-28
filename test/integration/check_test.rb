@@ -75,6 +75,7 @@ class CheckTest < Minitest::Test
       t3: :timestamp,
       t4: :timestamp,
       t5: :timestamp,
-      nn: :number
+      nn: :number,
+      empty: [:number]
   end
 end

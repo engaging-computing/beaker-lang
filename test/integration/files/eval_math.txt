@@ -327,6 +327,9 @@ max(1, 1/0) :: 1.0 :: number
 max(-1, 1/0) :: -1.0 :: number
 max(1/0, 1/0) :: :: number
 
+sum(Test.a) :: 15.0 :: number
+sum(Test.f) :: 10.0 :: number
+sum(Test.empty) :: 0.0 :: number
 #sum(Array.count(5, 3)) :: 18.0 :: number
 #sum(Array.count(-5, 3)) :: -12.0 :: number
 #sum(Array.repeat(6, 3)) :: 18.0 :: number
@@ -334,6 +337,9 @@ max(1/0, 1/0) :: :: number
 #sum(Array.repeat(1/0, 5)) :: 0.0 :: number
 #sum(Array.repeat(1, 0)) :: 0.0 :: number
 
+prod(Test.a) :: 120.0 :: number
+prod(Test.f) :: 24.0 :: number
+prod(Test.empty) :: 1.0 :: number
 #prod(Array.count(5, 3)) :: 210.0 :: number
 #prod(Array.count(-5, 3)) :: -60.0 :: number
 #prod(Array.repeat(6, 3)) :: 216.0 :: number
@@ -341,6 +347,9 @@ max(1/0, 1/0) :: :: number
 #prod(Array.repeat(1/0, 5)) :: 1.0 :: number
 #prod(Array.repeat(1, 0)) :: 1.0 :: number
 
+mean(Test.a) :: 3.0 :: number
+mean(Test.f) :: 2.0 :: number
+mean(Test.empty) :: 0.0 :: number
 #mean(Array.count(5, 3)) :: 6.0 :: number
 #mean(Array.count(-5, 3)) :: -4.0 :: number
 #mean(Array.repeat(6, 3)) :: 6.0 :: number
@@ -348,6 +357,9 @@ max(1/0, 1/0) :: :: number
 #mean(Array.repeat(1/0, 5)) :: 0.0 :: number
 #mean(Array.repeat(1, 0)) :: :: number
 
+variance(Test.a) :: 2.0 :: number
+variance(Test.f) :: 1.2 :: number
+variance(Test.empty) :: 0.0 :: number
 #variance(Array.repeat(-1, 5)) :: 0.0 :: number
 #variance(Array.repeat(0, 5)) :: 0.0 :: number
 #variance(Array.repeat(1, 5)) :: 0.0 :: number
@@ -356,6 +368,9 @@ max(1/0, 1/0) :: :: number
 #variance(Array.count(-1, -3)) :: 0.6666666666666666 :: number
 #variance(Array.repeat(1, 0)) :: :: number
 
+stddev(Test.a) :: 1.4142135623730951 :: number
+stddev(Test.f) :: 1.0954451150103321 :: number
+stddev(Test.empty) :: 0.0 :: number
 #stddev(Array.repeat(-1, 5)) :: 0.0 :: number
 #stddev(Array.repeat(0, 5)) :: 0.0 :: number
 #stddev(Array.repeat(1, 5)) :: 0.0 :: number
@@ -365,6 +380,8 @@ max(1/0, 1/0) :: :: number
 #stddev(Array.repeat(1, 0)) :: :: number
 
 array_min(Test.a) :: 1.0 :: number
+array_min(Test.f) :: 1.0 :: number
+array_min(Test.empty) :: :: number
 #array_min(Array.repeat(3, 5)) :: 3.0 :: number
 #array_min(Array.repeat(0, 5)) :: 0.0 :: number
 #array_min(Array.repeat(-3, 5)) :: -3.0 :: number
@@ -374,6 +391,8 @@ array_min(Test.a) :: 1.0 :: number
 #array_min(Array.count(-1, -3)) :: -3.0 :: number
 
 array_max(Test.a) :: 5.0 :: number
+array_max(Test.f) :: 4.0 :: number
+array_max(Test.empty) :: :: number
 #array_max(Array.repeat(3, 5)) :: 3.0 :: number
 #array_max(Array.repeat(0, 5)) :: 0.0 :: number
 #array_max(Array.repeat(-3, 5)) :: -3.0 :: number
