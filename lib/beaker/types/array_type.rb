@@ -44,7 +44,7 @@ module Beaker
     end
 
     def ord(r, sym)
-      l_packed = ArrayType.class_map[@contains].new(@get)
+      l_packed = ArrayType.class_map[@contains].new(get)
       r_packed = ArrayType.class_map[@contains].new(r.get)
       l_packed.ord(r_packed, sym)
     end

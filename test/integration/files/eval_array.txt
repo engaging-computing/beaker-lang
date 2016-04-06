@@ -58,6 +58,16 @@ Test.a != prev_p(Test.a, 3) :: true :: bool
 prev_p(Test.a, 3) - 6 :: :: number
 default(Test.na, 6) - 6 :: 0.0 :: number
 
+Test.a <= 2 :: true :: bool
+Test.a >= 2 :: true :: bool
+Test.a < 2 :: false :: bool
+Test.a > 2 :: false :: bool
+
+2 <= Test.a :: true :: bool
+2 >= Test.a :: true :: bool
+2 < Test.a :: false :: bool
+2 > Test.a :: false :: bool
+
 Test.b == Test.b :: true :: bool
 Test.b == next(Test.b) :: false :: bool
 Test.b != Test.b :: false :: bool
