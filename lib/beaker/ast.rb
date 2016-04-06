@@ -138,10 +138,13 @@ module Beaker
   class And < Binary
     def evaluate(env)
       l, r = super(env)
-      if l.type == :bool and r.type == :bool
+      l_type = Beaker.inner_type(l)
+      r_type = Beaker.inner_type(r)
+
+      if l_type == :bool and r_type == :bool
         BooleanType.new(l.get && r.get)
       else
-        fail ArgumentTypeError.new('&&', [:bool, :bool], [l.type, r.type])
+        fail ArgumentTypeError.new('&&', [:bool, :bool], [l_type, r_type])
       end
     end
 
@@ -153,10 +156,13 @@ module Beaker
   class Or < Binary
     def evaluate(env)
       l, r = super(env)
-      if l.type == :bool and r.type == :bool
+      l_type = Beaker.inner_type(l)
+      r_type = Beaker.inner_type(r)
+
+      if l_type == :bool and r_type == :bool
         BooleanType.new(l.get || r.get)
       else
-        fail ArgumentTypeError.new('||', [:bool, :bool], [l.type, r.type])
+        fail ArgumentTypeError.new('||', [:bool, :bool], [l_type, r_type])
       end
     end
 
@@ -168,10 +174,13 @@ module Beaker
   class Equality < Binary
     def evaluate(env)
       l, r = super(env)
-      if l.type == r.type and l.can_eq?
+      l_type = Beaker.inner_type(l)
+      r_type = Beaker.inner_type(r)
+
+      if l_type == r_type and l.can_eq?
         BooleanType.new(l.eq(r, @eq_sym))
       else
-        fail ArgumentTypeError.new(@eq_name, [:eq, :eq], [l.type, r.type])
+        fail ArgumentTypeError.new(@eq_name, [:eq, :eq], [l_type, r_type])
       end
     end
   end
@@ -203,10 +212,13 @@ module Beaker
   class Ordering < Binary
     def evaluate(env)
       l, r = super(env)
-      if l.type == r.type and l.can_ord?
+      l_type = Beaker.inner_type(l)
+      r_type = Beaker.inner_type(r)
+
+      if l_type == r_type and l.can_ord?
         BooleanType.new(l.ord(r, @comp_sym))
       else
-        fail ArgumentTypeError.new(@comp_name, [:ord, :ord], [l.type, r.type])
+        fail ArgumentTypeError.new(@comp_name, [:ord, :ord], [l_type, r_type])
       end
     end
   end
@@ -264,10 +276,12 @@ module Beaker
 
     def evaluate(env)
       x = @expr.evaluate(env)
+      x_type = Beaker.inner_type(x)
+
       if x.type == :bool
         BooleanType.new(!x.get)
       else
-        fail ArgumentTypeError.new('!', [:bool], [x.type])
+        fail ArgumentTypeError.new('!', [:bool], [x_type])
       end
     end
 

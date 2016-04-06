@@ -29,6 +29,26 @@ module Beaker
       :array
     end
 
+    def can_eq?
+      ArrayType.class_map[@contains].new(nil).can_eq?
+    end
+
+    def eq(r, sym)
+      l_packed = ArrayType.class_map[@contains].new(get)
+      r_packed = ArrayType.class_map[@contains].new(r.get)
+      l_packed.eq(r_packed, sym)
+    end
+
+    def can_ord?
+      ArrayType.class_map[@contains].new(nil).can_ord?
+    end
+
+    def ord(r, sym)
+      l_packed = ArrayType.class_map[@contains].new(@get)
+      r_packed = ArrayType.class_map[@contains].new(r.get)
+      l_packed.ord(r_packed, sym)
+    end
+
     def get
       access(@curr_pos, @default).get
     end

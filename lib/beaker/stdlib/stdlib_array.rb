@@ -1,5 +1,11 @@
 module Beaker
   def self.init_array
+    # Takes an array and sets the default value.
+    @stdlib.add 'default', FunctionType.new('default', lambda do |env, array, default|
+      check_default_value('default', array, default)
+      ArrayType.new(array.value, array.contains, array.curr_pos, default.get)
+    end, [AnyArrayContract.new, AnyContract.new(true)])
+
     # Takes an array and an optional default value (in case the specified location
     #   in the array is nil or out of bounds), and returns an array object with
     #   the current position set to n + 1, where n is the current position of the
