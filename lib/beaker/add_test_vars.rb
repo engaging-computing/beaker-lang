@@ -26,6 +26,7 @@ module Beaker
       't4' => TimestampType.new('2015/8/25 17:31:00'),
       't5' => TimestampType.new('2015/8/26 13:41:32'),
       'nn' => NumberType.new(nil),
+      'na' => ArrayType.new([nil], :number, 0),
       'empty' => ArrayType.new([], :number, 1)
   end
 end

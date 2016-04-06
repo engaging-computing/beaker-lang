@@ -411,3 +411,4 @@ max(1, 4) :: 4.0 :: number
 array_min(Test.a) :: 1.0 :: number
 array_max(Test.a) :: 5.0 :: number
 9999^9999 :: :: number
+(1/0) == (1/0) :: true :: bool

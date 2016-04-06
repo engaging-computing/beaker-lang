@@ -17,7 +17,11 @@ module Beaker
     end
 
     def eq(r, sym)
-      cmp_val = (@value - r.get).abs
+      # handle nils
+      l_val = is_nothing? ? 0 : @value
+      r_val = r.is_nothing? ? 0 : r.get
+      cmp_val = (l_val - r_val).abs
+
       delta = 1e-10
       case sym
       when :eq then cmp_val < delta
