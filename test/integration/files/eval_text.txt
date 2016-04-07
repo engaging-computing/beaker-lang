@@ -1,6 +1,6 @@
-strlen("") :: 0.0 :: number
-strlen("dogs") :: 4.0 :: number
-strlen("dogsaaaa") :: 8.0 :: number
+strlen("") :: 0 :: number
+strlen("dogs") :: 4 :: number
+strlen("dogsaaaa") :: 8 :: number
 capitalize("dogs") :: "Dogs" :: text
 upper("dogs") :: "DOGS" :: text
 lower("DOGS") :: "dogs" :: text

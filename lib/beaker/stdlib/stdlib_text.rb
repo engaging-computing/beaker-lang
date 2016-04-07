@@ -49,12 +49,12 @@ module Beaker
         type = x.type == :array ? x.contains : x.type
         case type
         when :bool then TextType.new(x.get ? 'true' : 'false')
-        when :number then TextType.new(x.get.to_s)
+        when :number then TextType.new(NumberType.to_s(x.get))
         when :text then TextType.new(x.get)
         when :timestamp then TextType.new(x.get.strftime('%Y/%m/%d %H:%M:%S'))
-        when :latitude then TextType.new(x.get.to_s)
-        when :longitude then TextType.new(x.get.to_s)
-        when :location then TextType.new("(#{x.get[0]}, #{x.get[1]})")
+        when :latitude then TextType.new(NumberType.to_s(x.get))
+        when :longitude then TextType.new(NumberType.to_s(x.get))
+        when :location then TextType.new("(#{NumberType.to_s(x.get[0])}, #{NumberType.to_s(x.get[1])})")
         else TextType.new('')
         end
       end

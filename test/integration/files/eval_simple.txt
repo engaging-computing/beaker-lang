@@ -18,9 +18,9 @@ false != false :: false :: bool
 !true :: false :: bool
 !false :: true :: bool
 !false && false :: false :: bool
-if(true, 1, 2) :: 1.0 :: number
-if(false, 1, 2) :: 2.0 :: number
-if (true, 1, 2) :: 1.0 :: number
+if(true, 1, 2) :: 1 :: number
+if(false, 1, 2) :: 2 :: number
+if (true, 1, 2) :: 1 :: number
 if(1 > 2, false, true) == !(1 > 2) :: true :: bool
 1 == 1 :: true :: bool
 1 == 2 :: false :: bool
@@ -59,25 +59,27 @@ if(1 > 2, false, true) == !(1 > 2) :: true :: bool
 "banana" >= "carrot" :: false :: bool
 true || false && false || false :: false :: bool
 false || false && false || true :: false :: bool
-1 + 2 + 3 :: 6.0 :: number
-1 - 2 - 3 :: -4.0 :: number
-1 * 2 * 3 :: 6.0 :: number
+1 + 2 + 3 :: 6 :: number
+1 - 2 - 3 :: -4 :: number
+1 * 2 * 3 :: 6 :: number
 1 / 2 / 4 :: 0.125 :: number
-2 ^ 3 ^ 4 :: 2.4178516392292583e+24 :: number
-37 % 23 :: 14.0 :: number
-37 % -23 :: -9.0 :: number
--37 % 23 :: 9.0 :: number
--37 % -23 :: -14.0 :: number
-1 + 2 + 3 + 4 + 5 :: 15.0 :: number
--1 ^ 4 :: 1.0 :: number
-1 + "cat" :: "1.0cat" :: text
-"cat" + 1 :: "cat1.0" :: text
+2 ^ 3 ^ 4 :: 2417851639229258349412352 :: number
+37 % 23 :: 14 :: number
+37 % -23 :: -9 :: number
+-37 % 23 :: 9 :: number
+-37 % -23 :: -14 :: number
+1 + 2 + 3 + 4 + 5 :: 15 :: number
+-1 ^ 4 :: 1 :: number
+1 + "cat" :: "1cat" :: text
+"cat" + 1 :: "cat1" :: text
 -2.3 * "cat" :: "ctactac" :: text
 "cat" * -2.3 :: "ctactac" :: text
 "dog" + "cat" * -2 :: "dogtactac" :: text
-13231321 % 31 :: 25.0 :: number
-321 % 78 % 15 :: 9.0 :: number
+"cat" + 2 :: "cat2" :: text
+2 + "cat" :: "2cat" :: text
+13231321 % 31 :: 25 :: number
+321 % 78 % 15 :: 9 :: number
 (1 + 2) / (5 + 7) :: 0.25 :: number
 1 / 0 :: :: number
-+-+-+----+-3 :: -3.0 :: number
-+-+-+---+-3 :: 3.0 :: number
++-+-+----+-3 :: -3 :: number
++-+-+---+-3 :: 3 :: number

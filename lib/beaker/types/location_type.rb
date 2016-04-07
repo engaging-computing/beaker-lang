@@ -13,7 +13,11 @@ module Beaker
     end
 
     def to_s
-      self.is_nothing? ? '' : "(#{@value[0]}, #{value[1]})"
+      if self.is_nothing?
+        ''
+      else
+        "(#{NumberType.to_s(@value[0])}, #{NumberType.to_s(value[1])})"
+      end
     end
 
     def self.distance(l1t, l2t)
