@@ -383,7 +383,7 @@ module Beaker
     end
 
     def to_s
-      @value.to_s
+      NumberType.to_s(@value)
     end
   end
 

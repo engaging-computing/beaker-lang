@@ -1,5 +1,5 @@
-number(true) :: 1.0 :: number
-number(false) :: 0.0 :: number
+number(true) :: 1 :: number
+number(false) :: 0 :: number
 text(true) :: "true" :: text
 text(false) :: "false" :: text
 bool(true) :: true :: bool

@@ -1,17 +1,17 @@
-number(Test.t1) :: 1440408660.0 :: number
-second(Test.t5) :: 32.0 :: number
-minute(Test.t5) :: 41.0 :: number
-hour(Test.t5) :: 13.0 :: number
-day(Test.t5) :: 26.0 :: number
-weekday(Test.t5) :: 3.0 :: number
-week(Test.t5) :: 35.0 :: number
-month(Test.t5) :: 8.0 :: number
-year(Test.t5) :: 2015.0 :: number
+number(Test.t1) :: 1440408660 :: number
+second(Test.t5) :: 32 :: number
+minute(Test.t5) :: 41 :: number
+hour(Test.t5) :: 13 :: number
+day(Test.t5) :: 26 :: number
+weekday(Test.t5) :: 3 :: number
+week(Test.t5) :: 35 :: number
+month(Test.t5) :: 8 :: number
+year(Test.t5) :: 2015 :: number
 am_pm(Test.t5) :: "PM" :: text
 weekday_name(Test.t5) :: "Wednesday" :: text
 month_name(Test.t5) :: "August" :: text
-elapsed(Test.t5, Test.t4) :: 72632.0 :: number
-elapsed(Test.t5, Test.t4, "seconds") :: 72632.0 :: number
+elapsed(Test.t5, Test.t4) :: 72632 :: number
+elapsed(Test.t5, Test.t4, "seconds") :: 72632 :: number
 elapsed(Test.t5, Test.t4, "minutes") :: 1210.5333333333333 :: number
 elapsed(Test.t5, Test.t4, "hours") :: 20.175555555555555 :: number
 elapsed(Test.t5, Test.t4, "days") :: 0.8406481481481481 :: number

@@ -45,6 +45,27 @@ module Beaker
       end
     end
 
+    def to_s
+      if is_nothing?
+        ''
+      elsif @value == (y = Integer(@value))
+        # Handles the case where value is a whole number, and you don't want decimals
+        y.to_s
+      else
+        @value.to_s
+      end
+    end
+
+    def self.to_s(x)
+      if x.nil?
+        ''
+      elsif x == (y = Integer(x))
+        y.to_s
+      else
+        x.to_s
+      end
+    end
+
     def self.arithmetic(op, l, r)
       if l.is_nothing? or r.is_nothing?
         NumberType.new(nil)

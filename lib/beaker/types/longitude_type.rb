@@ -44,6 +44,17 @@ module Beaker
       @value * Math::PI / 180
     end
 
+    def to_s
+      if is_nothing?
+        ''
+      elsif @value == (y = Integer(@value))
+        # Handles the case where value is a whole number, and you don't want decimals
+        y.to_s
+      else
+        @value.to_s
+      end
+    end
+
     def self.fromText(x)
       num = Float(x.get)
       LongitudeType.new(num)

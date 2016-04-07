@@ -41,8 +41,8 @@ module Beaker
     end
 
     def self.concatenate(l, r)
-      temp_l = l.get.to_s
-      temp_r = r.get.to_s
+      temp_l = l.get.is_a?(Numeric) ? NumberType.to_s(l.get) : l.get.to_s
+      temp_r = r.get.is_a?(Numeric) ? NumberType.to_s(r.get) : r.get.to_s
       TextType.new(temp_l + temp_r)
     end
 
